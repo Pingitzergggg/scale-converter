@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <p id="scale"></p>
-    <p id="scale-degrees"></p><br>
-    <p id="notes"></p>
-    <input type="text" placeholder="Oiginal Scale" id="original_scale">
-    <input type="text" placeholder="New Scale" id="new_scale">
-    <input type="text" placeholder="Prog. Degrees" id="prog_degrees">
-    <input type="text" placeholder="Prog. Notes" id="prog_notes">
-    <button onclick="convert()">convert</button>
+    <form>
+        <input type="text" placeholder="Oiginal Scale" id="original_scale">
+        <input type="text" placeholder="New Scale" id="new_scale">
+        <label class="switch">
+            <input id="checkbox" onchange="showCheckboxValue()" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <input type="text" placeholder="Prog. Degrees" id="prog_degrees">
+        <input type="text" placeholder="Prog. Notes" id="prog_notes">
+        <button onclick="convert()">convert</button><br>
+    </form>
 </body>
 <footer>
     <script src="script.js"></script>
