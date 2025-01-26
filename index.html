@@ -3,13 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+    <div class="container">
+        <div style="text-align: center;" class="row">
+            <div class="col-md-6">
+                <input type="text" placeholder="Oiginal Tonic" id="original_tonic">
+            </div>
+            <div class="col-md-6">
+                <input type="text" placeholder="Original Scale" id="original_scale" readonly="1">
+            </div>
+        </div>
+    </div>
     <form>
-        <input type="text" placeholder="Oiginal Tonic" id="original_tonic">
-        <input type="text" placeholder="Original Scale" id="original_scale" readonly="1">
+        
+
         <input type="text" placeholder="New Tonic" id="new_tonic">
         <input type="text" placeholder="New Scale" id="new_scale" readonly="1">
         <label class="switch">
@@ -21,6 +36,7 @@
         <input type="button" value="Convert" onclick="convert()">
     </form>
         <p>Degrees: <a id="p_degrees"></a></p>
+        <p>Original Progression: <a id="p_original_prog"></a></p>
         <p>Modified Progression: <a id="p_modified_prog"></a></p>
 </body>
 <footer>

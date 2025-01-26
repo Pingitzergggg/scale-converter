@@ -1,4 +1,10 @@
 document.getElementById("prog_degrees").style = "display: none;";
+document.getElementById("original_tonic").value = "";
+document.getElementById("original_scale").value = "";
+document.getElementById("new_tonic").value = "";
+document.getElementById("new_scale").value = "";
+document.getElementById("prog_degrees").value = "";
+document.getElementById("prog_notes").value = "";
 steps = [1,1,0,1,1,1,0];
 notes_asc = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "H","C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "H"];
 notes_desc = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "B", "H"];
@@ -53,15 +59,17 @@ function convert() {
     if(!checkbox) {
         original_prog = document.getElementById("prog_notes").value.split("-"); console.log("original_prog = "+original_prog);
         degFinder(original_prog); console.log("degree = "+degree);
-        document.getElementById("p_degrees").value = degree;
+        document.getElementById("p_degrees").innerHTML = degree;
         progFinder(modified_scale, modified_prog); console.log("modified_prog = "+modified_prog);
-        document.getElementById("p_modified_prog").value = modified_prog;
+        document.getElementById("p_original_prog").innerHTML = original_prog;
+        document.getElementById("p_modified_prog").innerHTML = modified_prog;
     } else {
         degree = document.getElementById("prog_degrees").value.split("-"); console.log("degree = "+degree);
-        document.getElementById("p_degrees").value = degree;
+        document.getElementById("p_degrees").innerHTML = degree;
         progFinder(original_scale, original_prog); console.log("original_prog = "+original_prog);
         progFinder(modified_scale, modified_prog); console.log("modified_prog = "+modified_prog);
-        document.getElementById("p_modified_progression").value = modified_prog;
+        document.getElementById("p_original_prog").innerHTML = original_prog;
+        document.getElementById("p_modified_progression").innerHTML = modified_prog;
     }
 }
 
