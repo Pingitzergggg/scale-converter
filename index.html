@@ -15,29 +15,43 @@
     <div class="container">
         <div style="text-align: center;" class="row">
             <div class="col-md-6">
-                <input type="text" placeholder="Oiginal Tonic" id="original_tonic">
+                <input type="text" onchange="syntaxChecker('original_tonic')" placeholder="Oiginal Tonic" id="original_tonic">
+                <p id="original_tonic_error" style="display: none; color: red;"></p>
             </div>
             <div class="col-md-6">
                 <input type="text" placeholder="Original Scale" id="original_scale" readonly="1">
             </div>
         </div>
-    </div>
-    <form>
-        
-
-        <input type="text" placeholder="New Tonic" id="new_tonic">
-        <input type="text" placeholder="New Scale" id="new_scale" readonly="1">
-        <label class="switch">
-            <input id="checkbox" onchange="changeCheckbox()" type="checkbox">
-            <span class="slider round"></span>
-        </label>
-        <input type="text" placeholder="Prog. Degrees" id="prog_degrees">
-        <input type="text" placeholder="Prog. Notes" id="prog_notes">
-        <input type="button" value="Convert" onclick="convert()">
-    </form>
-        <p>Degrees: <a id="p_degrees"></a></p>
-        <p>Original Progression: <a id="p_original_prog"></a></p>
-        <p>Modified Progression: <a id="p_modified_prog"></a></p>
+        <div style="text-align: center;" class="row">
+            <div class="col-md-6">
+                <input type="text" onchange="syntaxChecker('new_tonic')" placeholder="New Tonic" id="new_tonic">
+                <p id="new_tonic_error" style="display: none; color: red;"></p>
+            </div>
+            <div class="col-md-6">
+                <input type="text" placeholder="New Scale" id="new_scale" readonly="1">
+            </div>
+        </div>
+        <div style="text-align: center;" class="row">
+            <div class="col-md-12 label">
+                <label class="switch">
+                    <input id="checkbox" onchange="changeCheckbox()" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <input type="text" placeholder="Prog. Degrees" id="prog_degrees">
+                <p id="prog_degrees_error" style="display: none; color: red;"></p>
+                <input type="text" onchange="syntaxChecker('prog_notes')" placeholder="Prog. Notes" id="prog_notes">
+                <p id="prog_notes_error" style="display: none; color: red;"></p>
+            </div>
+        </div>
+        <div style="text-align: center;" class="row">
+            <div class="col-md-12">
+                <input type="button" value="Convert" onclick="convert()">
+                <p>Degrees: <a id="p_degrees"></a></p>
+                <p>Original Progression: <a id="p_original_prog"></a></p>
+                <p>Modified Progression: <a id="p_modified_prog"></a></p>
+            </div>
+        </div>
+    </div>  
 </body>
 <footer>
     <script src="script.js"></script>
