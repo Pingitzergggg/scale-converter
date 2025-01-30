@@ -88,7 +88,7 @@ function convert() {
             progFinder(original_scale, original_prog); console.log("original_prog = "+original_prog);
             progFinder(modified_scale, modified_prog); console.log("modified_prog = "+modified_prog);
             document.getElementById("p_original_prog").innerHTML = original_prog;
-            document.getElementById("p_modified_progression").innerHTML = modified_prog;
+            document.getElementById("p_modified_prog").innerHTML = modified_prog;
         }
     }
 }
@@ -108,7 +108,9 @@ function changeCheckbox() {
 function syntaxChecker(input_id) {
     let current;
     let current_list;
+    let counter;
     if (input_id == "original_tonic" || input_id == "new_tonic") {
+        runnable = true;
         document.getElementById(input_id+"_error").style = "display: none;";
         current = String(document.getElementById(input_id).value).toUpperCase();
         current_list = current.split("");
@@ -128,8 +130,6 @@ function syntaxChecker(input_id) {
                 document.getElementById(input_id+"_error").style = "display: block;";
                 document.getElementById(input_id+"_error").innerHTML = "parameter not valid";
                 runnable = false;
-            } else {
-                runnable = true;
             }
         } else {
             document.getElementById(input_id+"_error").innerHTML = "parameter lenght not suitable";
@@ -138,12 +138,13 @@ function syntaxChecker(input_id) {
         scaleFinder(String(document.getElementById("original_tonic").value).toUpperCase(), original_scale);
     }
     if (input_id == "prog_notes") {
+        runnable = true;
         document.getElementById(input_id+"_error").style = "display: none;";
         current = String(document.getElementById("prog_notes").value).toUpperCase();
         console.log(current)
         current_list = current.split("");
         console.log(current_list)
-        let counter = false;
+        counter = false;
         for(let i = 0; i < current_list.length; i++) {
             if (current_list[i] == "-") {
                 counter = true;
@@ -167,6 +168,36 @@ function syntaxChecker(input_id) {
         }
         console.log(counter);
         console.log(Number(current.split("-").length) - 1)
+    }
+    if (input_id == "prog_degrees") {
+        runnable = true;
+        document.getElementById(input_id+"_error").style = "display: none;";
+        current = String(document.getElementById("prog_degrees").value);
+        console.log(current)
+        current_list = current.split("");
+        console.log(current_list)
+        counter = false;
+        for(let i = 0; i < current_list.length; i++) {
+            if (current_list[i] == "-") {
+                counter = true;
+                break;
+            }
+        }
+        if (counter) {
+            current_list = current.split("-");
+            console.log(original_scale);
+            for(let i = 0; i < current_list.length; i++) {
+                if (Number(current_list[i]) < 1 || Number(current_list[i]) > 7) {
+                    runnable = false;
+                    document.getElementById(input_id+"_error").style = "display: block;";
+                    document.getElementById(input_id+"_error").innerHTML = "One or more parameters are not valid degrees";
+                }
+            }
+        } else {
+            runnable = false;
+            document.getElementById(input_id+"_error").style = "display: block;";
+            document.getElementById(input_id+"_error").innerHTML = "Provide '-' character between all parameters!";
+        }
     }
     console.log(runnable);
 }

@@ -16,7 +16,7 @@
         <div style="text-align: center;" class="row">
             <div class="col-md-6">
                 <input type="text" onchange="syntaxChecker('original_tonic')" placeholder="Oiginal Tonic" id="original_tonic">
-                <p id="original_tonic_error" style="display: none; color: red;"></p>
+                <p id="original_tonic_error" class="error"></p>
             </div>
             <div class="col-md-6">
                 <input type="text" placeholder="Original Scale" id="original_scale" readonly="1">
@@ -25,7 +25,7 @@
         <div style="text-align: center;" class="row">
             <div class="col-md-6">
                 <input type="text" onchange="syntaxChecker('new_tonic')" placeholder="New Tonic" id="new_tonic">
-                <p id="new_tonic_error" style="display: none; color: red;"></p>
+                <p id="new_tonic_error" class="error"></p>
             </div>
             <div class="col-md-6">
                 <input type="text" placeholder="New Scale" id="new_scale" readonly="1">
@@ -37,10 +37,10 @@
                     <input id="checkbox" onchange="changeCheckbox()" type="checkbox">
                     <span class="slider round"></span>
                 </label>
-                <input type="text" placeholder="Prog. Degrees" id="prog_degrees">
-                <p id="prog_degrees_error" style="display: none; color: red;"></p>
+                <input type="text" onchange="syntaxChecker('prog_degrees')" placeholder="Prog. Degrees" id="prog_degrees">
+                <p id="prog_degrees_error" class="error"></p>
                 <input type="text" onchange="syntaxChecker('prog_notes')" placeholder="Prog. Notes" id="prog_notes">
-                <p id="prog_notes_error" style="display: none; color: red;"></p>
+                <p id="prog_notes_error" class="error"></p>
             </div>
         </div>
         <div style="text-align: center;" class="row">
