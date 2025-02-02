@@ -6,6 +6,7 @@ document.getElementById("new_scale").value = "";
 document.getElementById("prog_degrees").value = "";
 document.getElementById("prog_notes").value = "";
 steps = [1,1,0,1,1,1,0];
+modes = ["ionian", "dorian", "phrygian", "lydian", "mixylodian", "aeolian", "locrian"];
 notes_asc = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "H","C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "H"];
 notes_desc = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "B", "H"];
 degree = [];
@@ -18,7 +19,41 @@ let modified_scale_tonic;
 let checkbox = false;
 let runnable = false;
 
-function scaleFinder(tonic, scale) { //Finds the scale from the original tonic and fills it into scale
+function getModeFinder(mode) {
+    let origin;
+    let current;
+    let current_list = [];
+    for(let i = 0; i < modes.length; i++) {
+        if (modes[i] == mode) {
+            current = modes.indexOf(modes[i]);
+            origin = current;
+            break;
+        }
+    }
+    for(let i = 0; i < steps.length+1; i++) {
+        if (!(i > steps.length)) {
+            if (i = current) {
+                current_list.push(steps[i]);
+            }
+            current++;
+        } else {
+            current = 0;
+            for(let j = 0; j < steps.length; j++) {
+                if (j != origin) {
+                    current_list.push(steps[j]);
+                    current++;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+    return current_list;
+}
+
+console.log(getModeFinder("dorian"));
+
+function scaleFinder(tonic, mode, scale) { //Finds the scale from the original tonic and fills it into scale
     for(i = 0; i<notes_asc.length; i++) {
         if(notes_asc[i] == tonic) {
             scale.push(notes_asc[i]);
