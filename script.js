@@ -1,4 +1,5 @@
 document.getElementById("prog_degrees").style = "display: none;";
+document.getElementById("sus_div").style = "display: none;";
 document.getElementById("original_tonic").value = "";
 document.getElementById("original_scale").value = "";
 document.getElementById("new_tonic").value = "";
@@ -8,6 +9,8 @@ document.getElementById("prog_notes").value = "";
 document.getElementById("original_mode").value = "ionian";
 document.getElementById("new_mode").value = "ionian";
 steps = [1,1,0,1,1,1,0];
+chords = ["", "m", "m", "", "", "m", "dim"];
+sus_chords = ["sus4", "sus4", "sus2", "sus2", "sus4", "sus4", "dim"];
 modes = ["ionian", "dorian", "phrygian", "lydian", "mixylodian", "aeolian", "locrian"];
 notes_asc = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "H","C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "H"];
 notes_desc = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "B", "H"];
@@ -18,8 +21,57 @@ modified_scale = [];
 modified_prog = [];
 let original_scale_tonic;
 let modified_scale_tonic;
+let showsus = false;
 let checkbox = false;
 let runnable = false;
+
+function getChordFinder(mode) { // [0] index for chord list, [1] index for sus chord list
+    let current;
+    let final_list = [];
+    let current_list = [];
+    let current_suslist = [];
+    for(let i = 0; i < modes.length; i++) {
+        if (mode == "ionian") {
+            current_suslist = sus_chords;
+            current_list = chords;
+            final_list.push(current_list);
+            final_list.push(current_suslist);
+            return final_list;
+        } else {
+            if (modes[i] == mode) {
+                current = i;
+                console.log(current);
+                origin = current;
+                break;
+            }
+        }
+    }
+    for(let i = 0; i < chords.length+1; i++) {
+        if (i < chords.length) {
+            if (i = current) {
+                console.log(chords[i]);
+                current_list.push(chords[i])
+                current_suslist.push(sus_chords[i]);
+            }
+            current++;
+        } else {
+            current = 0;
+            for(let j = 0; j < chords.length; j++) {
+                if (j != origin) {
+                    current_list.push(chords[j]);
+                    current_suslist.push(sus_chords[j]);
+                    current++;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+    console.log(current_list);
+    final_list.push(current_list);
+    final_list.push(current_suslist);
+    return final_list;
+}
 
 function getModeFinder(mode) {
     let origin;
@@ -57,6 +109,22 @@ function getModeFinder(mode) {
         }
     }
     console.log(current_list);
+    return current_list;
+}
+
+function progChordify(prog, chords) {
+    let current_list = [];
+    for(let i = 0; i < degree.length; i++) {
+        current_list.push(prog[i]+chords[(Number(degree[i])-1)]);
+    }
+    return current_list;
+}
+
+function progSussify(prog, sus_chords) {
+    let current_list = [];
+    for(let i = 0; i < degree.length; i++) {
+        current_list.push(prog[i]+sus_chords[(Number(degree[i])-1)]);
+    }
     return current_list;
 }
 
@@ -110,9 +178,15 @@ function convert() {
         modified_prog = [];
         original_scale_tonic = String(document.getElementById("original_tonic").value).toUpperCase();
         modified_scale_tonic = String(document.getElementById("new_tonic").value).toUpperCase();
-        scaleFinder(original_scale_tonic, original_scale, getModeFinder(String(document.getElementById("original_mode").value))); console.log("original_scale = "+original_scale);
+        original_mode = getModeFinder(String(document.getElementById("original_mode").value));
+        modified_mode = getModeFinder(String(document.getElementById("new_mode").value));
+        original_chords = getChordFinder(String(document.getElementById("original_mode").value))[0];
+        modified_chords = getChordFinder(String(document.getElementById("new_mode").value))[0];
+        original_sus_chords = getChordFinder(String(document.getElementById("original_mode").value))[1];
+        modified_sus_chords = getChordFinder(String(document.getElementById("new_mode").value))[1];
+        scaleFinder(original_scale_tonic, original_scale, original_mode); console.log("original_scale = "+original_scale);
         document.getElementById("original_scale").value = original_scale.join("-");
-        scaleFinder(modified_scale_tonic, modified_scale, getModeFinder(String(document.getElementById("new_mode").value))); console.log("modified_scale = "+modified_scale);
+        scaleFinder(modified_scale_tonic, modified_scale, modified_mode); console.log("modified_scale = "+modified_scale);
         document.getElementById("new_scale").value = modified_scale.join("-");
         if(!checkbox) {
             original_prog = document.getElementById("prog_notes").value.split("-"); console.log("original_prog = "+original_prog);
@@ -122,15 +196,19 @@ function convert() {
             degFinder(original_prog); console.log("degree = "+degree);
             document.getElementById("p_degrees").innerHTML = degTrans(degree).join("-");
             progFinder(modified_scale, modified_prog); console.log("modified_prog = "+modified_prog);
-            document.getElementById("p_original_prog").innerHTML = original_prog.join("-");
-            document.getElementById("p_modified_prog").innerHTML = modified_prog.join("-");
+            document.getElementById("p_original_prog").innerHTML = progChordify(original_prog, original_chords).join("-");
+            document.getElementById("p_modified_prog").innerHTML = progChordify(modified_prog, modified_chords).join("-");
+            document.getElementById("p_original_prog_sus").innerHTML = progSussify(original_prog, original_sus_chords).join("-");
+            document.getElementById("p_modified_prog_sus").innerHTML = progSussify(modified_prog, modified_sus_chords).join("-");
         } else {
             degree = document.getElementById("prog_degrees").value.split("-"); console.log("degree = "+degree);
-            document.getElementById("p_degrees").innerHTML = degTrans(degree);
+            document.getElementById("p_degrees").innerHTML = degTrans(degree).join("-");
             progFinder(original_scale, original_prog); console.log("original_prog = "+original_prog);
             progFinder(modified_scale, modified_prog); console.log("modified_prog = "+modified_prog);
-            document.getElementById("p_original_prog").innerHTML = original_prog;
-            document.getElementById("p_modified_prog").innerHTML = modified_prog;
+            document.getElementById("p_original_prog").innerHTML = progChordify(original_prog, original_chords).join("-");
+            document.getElementById("p_modified_prog").innerHTML = progChordify(modified_prog, modified_chords).join("-");
+            document.getElementById("p_original_prog_sus").innerHTML = progSussify(original_prog, original_sus_chords).join("-");
+            document.getElementById("p_modified_prog_sus").innerHTML = progSussify(modified_prog, modified_sus_chords).join("-");
         }
     }
 }
@@ -147,22 +225,34 @@ function changeCheckbox() {
     }
 }
 
+function changeShowSus() {
+    if(showsus) {
+        showsus = false;
+        document.getElementById("sus_div").style = "display: none;";
+    } else {
+        showsus = true;
+        document.getElementById("sus_div").style = "display: inline;";
+    }
+}
+
 function changeModes(x) {
     current = document.getElementById(x).value;
     let tonic;
     console.log(current)
-    if (runnable) {
-        if (x == "original_mode") {
-            original_scale = [];
-            tonic = String(document.getElementById("original_tonic").value).toUpperCase();
-            scaleFinder(tonic, original_scale, getModeFinder(String(current)));
-            console.log(original_scale)
-            document.getElementById("original_scale").value = original_scale.join("-");
-        } else if (x == "new_mode") {
-            modified_scale = [];
-            tonic = String(document.getElementById("new_tonic").value).toUpperCase();
-            scaleFinder(tonic, modified_scale, getModeFinder(String(current)));
-        }
+    if (x == "original_mode") {
+        original_scale = [];
+        tonic = String(document.getElementById("original_tonic").value).toUpperCase();
+        scaleFinder(tonic, original_scale, getModeFinder(String(current)));
+        console.log(original_scale)
+        document.getElementById("original_scale").value = original_scale.join("-");
+    } else if (x == "new_mode") {
+        modified_scale = [];
+        tonic = String(document.getElementById("new_tonic").value).toUpperCase();
+        scaleFinder(tonic, modified_scale, getModeFinder(String(current)));
+        document.getElementById("new_scale").value = modified_scale.join("-");
+    }
+    if (checkbox == false && document.getElementById("prog_notes").value != "") {
+        syntaxChecker("prog_notes");
     }
 }
 
@@ -197,7 +287,6 @@ function syntaxChecker(input_id) {
             runnable = false;
         }
         scaleFinder(String(document.getElementById("original_tonic").value).toUpperCase(), original_scale, getModeFinder(String(document.getElementById("original_mode").value)));
-        document.getElementById("original_scale").value = original_scale.join("-");
     }
     if (input_id == "prog_notes") {
         runnable = true;
