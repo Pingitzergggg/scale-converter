@@ -31,7 +31,7 @@ function getModeFinder(mode) {
         }
     }
     for(let i = 0; i < steps.length+1; i++) {
-        if (!(i > steps.length)) {
+        if (i < steps.length) {
             if (i = current) {
                 current_list.push(steps[i]);
             }
@@ -51,16 +51,14 @@ function getModeFinder(mode) {
     return current_list;
 }
 
-console.log(getModeFinder("dorian"));
-
-function scaleFinder(tonic, mode, scale) { //Finds the scale from the original tonic and fills it into scale
+function scaleFinder(tonic, scale, mode) { //Finds the scale from the original tonic and fills it into scale
     for(i = 0; i<notes_asc.length; i++) {
         if(notes_asc[i] == tonic) {
             scale.push(notes_asc[i]);
-            for(j = 0; j<steps.length-1; j++) {
-                if(steps[j] == 1) {
+            for(j = 0; j<mode.length-1; j++) {
+                if(mode[j] == 1) {
                     scale.push(notes_asc[notes_asc.indexOf(scale[scale.length-1])+2]);
-                } else if(steps[j] == 0) {
+                } else if(mode[j] == 0) {
                     scale.push(notes_asc[notes_asc.indexOf(scale[scale.length-1])+1]);
                 }
             }
@@ -103,9 +101,9 @@ function convert() {
         modified_prog = [];
         original_scale_tonic = String(document.getElementById("original_tonic").value).toUpperCase();
         modified_scale_tonic = String(document.getElementById("new_tonic").value).toUpperCase();
-        scaleFinder(original_scale_tonic, original_scale); console.log("original_scale = "+original_scale);
+        scaleFinder(original_scale_tonic, original_scale, getModeFinder(String(document.getElementById("original_mode").value))); console.log("original_scale = "+original_scale);
         document.getElementById("original_scale").value = original_scale.join("-");
-        scaleFinder(modified_scale_tonic, modified_scale); console.log("modified_scale = "+modified_scale);
+        scaleFinder(modified_scale_tonic, modified_scale, getModeFinder(String(document.getElementById("new_mode").value))); console.log("modified_scale = "+modified_scale);
         document.getElementById("new_scale").value = modified_scale.join("-");
         if(!checkbox) {
             original_prog = document.getElementById("prog_notes").value.split("-"); console.log("original_prog = "+original_prog);
@@ -170,7 +168,7 @@ function syntaxChecker(input_id) {
             document.getElementById(input_id+"_error").innerHTML = "parameter lenght not suitable";
             runnable = false;
         }
-        scaleFinder(String(document.getElementById("original_tonic").value).toUpperCase(), original_scale);
+        scaleFinder(String(document.getElementById("original_tonic").value).toUpperCase(), original_scale, getModeFinder(String(document.getElementById("original_mode").value)));
     }
     if (input_id == "prog_notes") {
         runnable = true;

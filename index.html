@@ -14,20 +14,42 @@
 <body>
     <div class="container">
         <div style="text-align: center;" class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <input type="text" onchange="syntaxChecker('original_tonic')" placeholder="Oiginal Tonic" id="original_tonic">
                 <p id="original_tonic_error" class="error"></p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <select id="original_mode">
+                    <option value="ionian">Ionian</option>
+                    <option value="dorian">Dorian</option>
+                    <option value="phrygian">Phrygian</option>
+                    <option value="lydian">Lydian</option>
+                    <option value="mixylodian">Mixylodian</option>
+                    <option value="aeolian">Aeolian</option>
+                    <option value="locrian">Locrian</option>
+                </select>
+            </div>
+            <div class="col-md-4">
                 <input type="text" placeholder="Original Scale" id="original_scale" readonly="1">
             </div>
         </div>
         <div style="text-align: center;" class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <input type="text" onchange="syntaxChecker('new_tonic')" placeholder="New Tonic" id="new_tonic">
                 <p id="new_tonic_error" class="error"></p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <select id="new_mode">
+                    <option value="ionian">Ionian</option>
+                    <option value="dorian">Dorian</option>
+                    <option value="phrygian">Phrygian</option>
+                    <option value="lydian">Lydian</option>
+                    <option value="mixylodian">Mixylodian</option>
+                    <option value="aeolian">Aeolian</option>
+                    <option value="locrian">Locrian</option>
+                </select>
+            </div>
+            <div class="col-md-4">
                 <input type="text" placeholder="New Scale" id="new_scale" readonly="1">
             </div>
         </div>
