@@ -15,11 +15,11 @@
     <div class="container">
         <div style="text-align: center;" class="row">
             <div class="col-md-4">
-                <input type="text" onchange="syntaxChecker('original_tonic')" placeholder="Oiginal Tonic" id="original_tonic">
+                <input type="text" onchange="syntaxChecker('original_tonic')" placeholder="Original Tonic" id="original_tonic">
                 <p id="original_tonic_error" class="error"></p>
             </div>
             <div class="col-md-4">
-                <select id="original_mode">
+                <select onchange="changeModes('original_mode')" id="original_mode">
                     <option value="ionian">Ionian</option>
                     <option value="dorian">Dorian</option>
                     <option value="phrygian">Phrygian</option>
@@ -39,7 +39,7 @@
                 <p id="new_tonic_error" class="error"></p>
             </div>
             <div class="col-md-4">
-                <select id="new_mode">
+                <select onchange="changeModes('new_mode')" id="new_mode">
                     <option value="ionian">Ionian</option>
                     <option value="dorian">Dorian</option>
                     <option value="phrygian">Phrygian</option>

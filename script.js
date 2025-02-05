@@ -26,6 +26,7 @@ function getModeFinder(mode) {
     for(let i = 0; i < modes.length; i++) {
         if (modes[i] == mode) {
             current = modes.indexOf(modes[i]);
+            console.log("current: "+current);
             origin = current;
             break;
         }
@@ -48,6 +49,7 @@ function getModeFinder(mode) {
             }
         }
     }
+    console.log(current_list);
     return current_list;
 }
 
@@ -138,6 +140,19 @@ function changeCheckbox() {
     }
 }
 
+function changeModes(x) {
+    current = document.getElementById(x).value;
+    if (runnable) {
+        if (x == "original_mode") {
+            scaleFinder(String(document.getElementById("original_tonic").value), original_scale, getModeFinder(String(x)));
+            document.getElementById("original_scale").value = original_scale.join("-");
+        } else if (x == "new_mode") {
+            scaleFinder(String(document.getElementById("new_tonic").value), modified_scale, getModeFinder(String(x)));
+            document.getElementById("new_scale").value = modified_scale.join("-");
+        }
+    }
+}
+
 function syntaxChecker(input_id) {
     let current;
     let current_list;
@@ -169,6 +184,7 @@ function syntaxChecker(input_id) {
             runnable = false;
         }
         scaleFinder(String(document.getElementById("original_tonic").value).toUpperCase(), original_scale, getModeFinder(String(document.getElementById("original_mode").value)));
+        document.getElementById("original_scale").value = original_scale.join("-");
     }
     if (input_id == "prog_notes") {
         runnable = true;
