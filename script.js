@@ -5,6 +5,8 @@ document.getElementById("new_tonic").value = "";
 document.getElementById("new_scale").value = "";
 document.getElementById("prog_degrees").value = "";
 document.getElementById("prog_notes").value = "";
+document.getElementById("original_mode").value = "ionian";
+document.getElementById("new_mode").value = "ionian";
 steps = [1,1,0,1,1,1,0];
 modes = ["ionian", "dorian", "phrygian", "lydian", "mixylodian", "aeolian", "locrian"];
 notes_asc = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "H","C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "H"];
@@ -24,11 +26,16 @@ function getModeFinder(mode) {
     let current;
     let current_list = [];
     for(let i = 0; i < modes.length; i++) {
-        if (modes[i] == mode) {
-            current = modes.indexOf(modes[i]);
-            console.log("current: "+current);
-            origin = current;
-            break;
+        if (mode == "ionian") {
+            current_list = steps;
+            return current_list;
+        } else {
+            if (modes[i] == mode) {
+                current = i;
+                console.log("current: "+current);
+                origin = current;
+                break;
+            }
         }
     }
     for(let i = 0; i < steps.length+1; i++) {
@@ -142,13 +149,19 @@ function changeCheckbox() {
 
 function changeModes(x) {
     current = document.getElementById(x).value;
+    let tonic;
+    console.log(current)
     if (runnable) {
         if (x == "original_mode") {
-            scaleFinder(String(document.getElementById("original_tonic").value), original_scale, getModeFinder(String(x)));
+            original_scale = [];
+            tonic = String(document.getElementById("original_tonic").value).toUpperCase();
+            scaleFinder(tonic, original_scale, getModeFinder(String(current)));
+            console.log(original_scale)
             document.getElementById("original_scale").value = original_scale.join("-");
         } else if (x == "new_mode") {
-            scaleFinder(String(document.getElementById("new_tonic").value), modified_scale, getModeFinder(String(x)));
-            document.getElementById("new_scale").value = modified_scale.join("-");
+            modified_scale = [];
+            tonic = String(document.getElementById("new_tonic").value).toUpperCase();
+            scaleFinder(tonic, modified_scale, getModeFinder(String(current)));
         }
     }
 }
