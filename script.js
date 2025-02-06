@@ -266,7 +266,7 @@ function syntaxChecker(input_id) {
         current = String(document.getElementById(input_id).value).toUpperCase();
         current_list = current.split("");
         console.log(current_list);
-        if (current_list.length < 3 && current_list.length != 0) {
+        if (current_list.length < 3 || current_list.length != 0) {
             console.log("smaller then 3")
             let list_item = [];
             if (current_list.length == 1) {
