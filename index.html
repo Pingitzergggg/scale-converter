@@ -27,7 +27,12 @@
     <div class="container">
         <div style="text-align: center;" class="row">
             <div class="col-md-4">
-                <input type="text" onchange="syntaxChecker('original_tonic')" placeholder="Original Tonic" id="original_tonic">
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">@</span>
+                    <input type="text" class="form-control" placeholder="Original Tonic" id="original_tonic" onchange="syntaxChecker('original_tonic')" aria-label="Username"
+                        aria-describedby="addon-wrapping">
+                </div>
+                <!-- <input type="text" onchange="syntaxChecker('original_tonic')" placeholder="Original Tonic" id="original_tonic"> -->
                 <p id="original_tonic_error" class="error"></p>
             </div>
             <div class="col-md-4">
@@ -42,14 +47,19 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <input type="text" placeholder="Original Scale" id="original_scale" readonly="1">
+                <div class="input-group flex-nowrap">
+                    <input type="text" class="form-control" placeholder="Original Scale" id="original_scale" readonly="1" aria-label="Username"
+                    aria-describedby="addon-wrapping">
+                    <span class="input-group-text" id="addon-wrapping">@</span>
+                </div>
+                <!-- <input type="text" placeholder="Original Scale" id="original_scale" readonly="1"> -->
             </div>
         </div>
         <div style="text-align: center;" class="row">
             <div class="col-md-4">
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping">@</span>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                    <input type="text" class="form-control" placeholder="New Tonic" id="new_tonic" onchange="syntaxChecker('new_tonic')" aria-label="Username"
                         aria-describedby="addon-wrapping">
                 </div>
                 <!-- <input type="text" onchange="syntaxChecker('new_tonic')" placeholder="New Tonic" id="new_tonic"> -->
@@ -68,7 +78,12 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <input type="text" placeholder="New Scale" id="new_scale" readonly="1">
+                <div class="input-group flex-nowrap">
+                    <input type="text" class="form-control" placeholder="New Scale" id="new_scale" readonly="1" aria-label="Username"
+                    aria-describedby="addon-wrapping">
+                    <span class="input-group-text" id="addon-wrapping">@</span>
+                </div>
+                <!-- <input type="text" placeholder="New Scale" id="new_scale" readonly="1"> -->
             </div>
         </div>
         <div style="text-align: center;" class="row">
@@ -77,9 +92,17 @@
                     <input id="checkbox" onchange="changeCheckbox()" type="checkbox">
                     <span class="slider round"></span>
                 </label>
-                <input type="text" onchange="syntaxChecker('prog_degrees')" placeholder="Prog. Degrees" id="prog_degrees">
+                <div class="input-group flex-nowrap">
+                    <input type="text" class="form-control" placeholder="Prog. Degrees" id="prog_degrees" onchange="syntaxChecker('prog_degrees')" aria-label="Username"
+                        aria-describedby="addon-wrapping">
+                </div>
+                <!-- <input type="text" onchange="syntaxChecker('prog_degrees')" placeholder="Prog. Degrees" id="prog_degrees"> -->
                 <p id="prog_degrees_error" class="error"></p>
-                <input type="text" onchange="syntaxChecker('prog_notes')" placeholder="Prog. Notes" id="prog_notes">
+                <div class="input-group flex-nowrap">
+                    <input type="text" class="form-control" placeholder="Prog. Notes" id="prog_notes" onchange="syntaxChecker('prog_notes')" aria-label="Username"
+                        aria-describedby="addon-wrapping">
+                </div>
+                <!-- <input type="text" onchange="syntaxChecker('prog_notes')" placeholder="Prog. Notes" id="prog_notes"> -->
                 <p id="prog_notes_error" class="error"></p>
             </div>
         </div>
