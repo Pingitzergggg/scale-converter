@@ -7,6 +7,8 @@
     background-color: rgb(211, 29, 29);
     margin: 10px 0 10px 0;
     height: 50px;
+    width: 300px;
+    border: none;
 }
 
 .bar {
