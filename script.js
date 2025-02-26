@@ -221,7 +221,7 @@ function changeCheckbox() {
     } else {
         checkbox = true;
         document.getElementById("prog_degrees").style = "display: inline";
-        document.getElementById("prog_notes").style = "display: none";
+        document.getElementById("prog_notes").style = "display: none;";
     }
 }
 

@@ -1,18 +1,32 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: ;
+}
+
 .navbar {
     margin-bottom: 3%;
+}
+
+.div {
+    margin: 10px 0;
 }
 
 .btn {
     color: whitesmoke;
     background-color: rgb(211, 29, 29);
-    margin: 10px 0 10px 0;
+    /* margin: 10px 0 10px 0; */
     height: 50px;
     width: 300px;
     border: none;
 }
 
+.convert {
+    width: inherit;
+}
+
 .bar {
-    margin: 10px 0 10px 0;
+    /* margin: 10px 0 10px 0; */
     height: 50px;
 }
 
@@ -26,4 +40,8 @@
 
 .center {
     text-align: center;
+}
+
+footer {
+    background-color: #2b3035;
 }
