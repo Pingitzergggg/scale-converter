@@ -1,7 +1,16 @@
 body {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: ;
+}
+
+nav {
+    color: whitesmoke;
+}
+
+nav a {
+    text-decoration: none;
+    color: whitesmoke;
 }
 
 .navbar {
@@ -43,5 +52,63 @@ body {
 }
 
 footer {
-    background-color: #2b3035;
+    margin-top: auto;
+    background-color: rgb(175, 175, 175);
+    color: whitesmoke;
+}
+
+footer .footer_div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.github {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+}
+
+.github h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 25px;
+}
+
+.github p {
+    padding: 0;
+    margin: 0;
+    margin-left: 25px;
+    font-style: italic;
+    font-size: 8px;
+}
+
+footer .description {
+    font-size: 14px;
+    /* margin: 10px 0 0 0; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+footer .description p {
+    margin: 0;
+}
+
+footer .contact {
+    font-size: 11px;
+    text-align: right;
+}
+
+footer a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
