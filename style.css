@@ -13,6 +13,10 @@ nav a {
     color: whitesmoke;
 }
 
+#main {
+    margin-bottom: 20px;
+}
+
 .navbar {
     margin-bottom: 3%;
 }
@@ -22,11 +26,20 @@ nav a {
 }
 
 .btn {
+    transition: 1s;
     color: whitesmoke;
     background-color: rgb(211, 29, 29);
     /* margin: 10px 0 10px 0; */
     height: 50px;
-    width: 300px;
+    border: none;
+}
+
+.btn:hover {
+    transition: 1s;
+    background-color: rgb(211, 29, 29);
+    color: whitesmoke;
+    transform: scale(1.05);
+    height: 50px;
     border: none;
 }
 
@@ -101,7 +114,9 @@ footer .description p {
 
 footer .contact {
     font-size: 11px;
-    text-align: right;
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
 }
 
 footer a {
@@ -111,4 +126,39 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 990px) {
+
+    footer .description {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer .github {
+        display: none;
+    }
+
+    footer .contact p {
+        display: inline;
+    }
+
+    nav .fullscreen {
+        display: none;
+    }
+
+    footer .contact {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    #github-mini {
+        display: none;
+    }
+
+    .fullscreen {
+        display: inline;
+    }
 }
