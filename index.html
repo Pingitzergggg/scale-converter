@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,10 +14,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
     <link rel="stylesheet" href="switch.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animtaions.css">
     <title>Document</title>
 </head>
+
 <body>
 
     <!-- navbar -->
@@ -24,29 +30,39 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <!-- <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
-                <i class="fa-solid fa-arrows-rotate"></i>ScaleConvert
+                <!-- <i class="fa-solid fa-sun"></i> -->
+                <i id="logo" style="color: rgb(211,29,29);" class="fa-solid fa-arrows-rotate"></i> ScaleConvert
             </a>
-            <div class="fullscreen">
-                <a style="cursor: pointer; font-size: 20px;">
-                    <i class="fa-solid fa-expand"></i>
-                </a>
+            <div class="gadgets">
+                <div class="theme">
+                    <a style="cursor: pointer; font-size: 20px;">
+                        <i class="fa-solid fa-moon"></i>
+                    </a>
+                </div>
+                <div class="fullscreen">
+                    <a style="cursor: pointer; font-size: 20px;">
+                        <i class="fa-solid fa-expand"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container" id="main">
         <div style="text-align: center;" class="row">
             <div class="col-md-4 div">
                 <div class="input-group flex-nowrap bar">
                     <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-music"></i></span>
-                    <input type="text" class="form-control input left" placeholder="Original Tonic" id="original_tonic" onchange="syntaxChecker('original_tonic')" aria-label="Username"
+                    <input type="text" class="form-control input left" placeholder="Original Tonic" id="original_tonic"
+                        onchange="syntaxChecker('original_tonic')" aria-label="Username"
                         aria-describedby="addon-wrapping">
                 </div>
                 <!-- <input type="text" onchange="syntaxChecker('original_tonic')" placeholder="Original Tonic" id="original_tonic"> -->
                 <p id="original_tonic_error" class="error"></p>
             </div>
             <div class="col-md-4 div">
-                <select style="text-align: center;" class="form-select form-select-sm bar" onchange="changeModes('original_mode')" id="original_mode">
+                <select style="text-align: center;" class="form-select form-select-sm bar"
+                    onchange="changeModes('original_mode')" id="original_mode">
                     <option value="ionian">Ionian</option>
                     <option value="dorian">Dorian</option>
                     <option value="phrygian">Phrygian</option>
@@ -58,8 +74,8 @@
             </div>
             <div class="col-md-4 div">
                 <div class="input-group flex-nowrap bar">
-                    <input type="text" class="form-control input right" placeholder="Original Scale" id="original_scale" readonly="1" aria-label="Username"
-                    aria-describedby="addon-wrapping">
+                    <input type="text" class="form-control input right" placeholder="Original Scale" id="original_scale"
+                        readonly="1" aria-label="Username" aria-describedby="addon-wrapping">
                     <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-timeline"></i></span>
                 </div>
                 <!-- <input type="text" placeholder="Original Scale" id="original_scale" readonly="1"> -->
@@ -69,15 +85,16 @@
             <div class="col-md-4 div">
                 <div class="input-group flex-nowrap bar">
                     <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-music"></i></span>
-                    <input type="text" class="form-control input left" placeholder="New Tonic" id="new_tonic" onchange="syntaxChecker('new_tonic')" aria-label="Username"
-                        aria-describedby="addon-wrapping">
+                    <input type="text" class="form-control input left" placeholder="New Tonic" id="new_tonic"
+                        onchange="syntaxChecker('new_tonic')" aria-label="Username" aria-describedby="addon-wrapping">
                 </div>
                 <!-- <input type="text" onchange="syntaxChecker('new_tonic')" placeholder="New Tonic" id="new_tonic"> -->
                 <p id="new_tonic_error" class="error"></p>
 
             </div>
             <div class="col-md-4 div">
-                <select style="text-align: center;" class="form-select form-select-sm bar" onchange="changeModes('new_mode')" id="new_mode">
+                <select style="text-align: center;" class="form-select form-select-sm bar"
+                    onchange="changeModes('new_mode')" id="new_mode">
                     <option value="ionian">Ionian</option>
                     <option value="dorian">Dorian</option>
                     <option value="phrygian">Phrygian</option>
@@ -89,8 +106,8 @@
             </div>
             <div class="col-md-4 div">
                 <div class="input-group flex-nowrap bar">
-                    <input type="text" class="form-control input right" placeholder="New Scale" id="new_scale" readonly="1" aria-label="Username"
-                    aria-describedby="addon-wrapping">
+                    <input type="text" class="form-control input right" placeholder="New Scale" id="new_scale"
+                        readonly="1" aria-label="Username" aria-describedby="addon-wrapping">
                     <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-timeline"></i></span>
                 </div>
                 <!-- <input type="text" placeholder="New Scale" id="new_scale" readonly="1"> -->
@@ -99,11 +116,13 @@
         <div style="text-align: center;" class="row">
             <div class="col-md-8 label div">
                 <div class="input-group flex-nowrap bar" id="prog_degrees_div">
-                    <span style="cursor: pointer;" onclick="changeCheckbox()" class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-right-left"></i></span>
-                    <input type="text" class="form-control input left" placeholder="Prog. Degrees" id="prog_degrees" onchange="syntaxChecker('prog_degrees')" aria-label="Username"
-                    aria-describedby="addon-wrapping">
+                    <span style="cursor: pointer;" onclick="changeCheckbox()" class="input-group-text"
+                        id="addon-wrapping"><i class="fa-solid fa-right-left"></i></span>
+                    <input type="text" class="form-control input left" placeholder="Prog. Degrees" id="prog_degrees"
+                        onchange="syntaxChecker('prog_degrees')" aria-label="Username"
+                        aria-describedby="addon-wrapping">
                     <input type="text" class="form-control input left" placeholder="Prog. Notes" id="prog_notes"
-                    onchange="syntaxChecker('prog_notes')" aria-label="Username" aria-describedby="addon-wrapping">
+                        onchange="syntaxChecker('prog_notes')" aria-label="Username" aria-describedby="addon-wrapping">
                 </div>
                 <p id="prog_notes_error" class="error"></p>
                 <p id="prog_degrees_error" class="error"></p>
@@ -112,20 +131,62 @@
                 <button type="button" class="btn convert" onclick="convert()">Convert</button>
             </div>
         </div>
-        <div style="text-align: center;" class="row">
+        <div style="text-align: center; display: none;" id="values" class="row">
             <div class="col-md-12">
-                <p>Degrees: <a id="p_degrees"></a></p>
-                <p>Original Progression: <a id="p_original_prog"></a></p>
-                <p>Modified Progression: <a id="p_modified_prog"></a></p>
+                <p>Degrees: <a></a></p>
+                <p>Original Progression: <a></a></p>
+                <p>Modified Progression: <a></a></p>
                 <button type="button" class="btn" onclick="changeShowSus()">Show sus chords</button>
             </div>
             <div class="col-md-12" id="sus_div">
                 <p style="text-align: center; font-weight: bold;">Compatible sus chords: </p>
-                <p>Original Progression: <a id="p_original_prog_sus"></a></p>
-                <p>Modified Progression: <a id="p_modified_prog_sus"></a></p>
+                <p>Original Progression: <a></a></p>
+                <p>Modified Progression: <a></a></p>
             </div>
         </div>
-    </div>  
+        <div class="row">
+            <div class="col-md-6 div">
+                <div class="input-group flex-nowrap bar">
+                    <span class="input-group-text" id="addon-wrapping">Og. Prog.</span>
+                    <input type="text" class="form-control input left" placeholder="Original Progression"
+                        id="p_original_prog" readonly="1" aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+            </div>
+            <div class="col-md-6 div">
+                <div class="input-group flex-nowrap bar">
+                    <input type="text" class="form-control input right" placeholder="New Progression"
+                        id="p_modified_prog" readonly="1" aria-label="Username" aria-describedby="addon-wrapping">
+                    <span class="input-group-text" id="addon-wrapping">New Prog.</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 div">
+                <div class="input-group flex-nowrap bar">
+                    <span class="input-group-text" id="addon-wrapping">Sustained Version</span>
+                    <input type="text" class="form-control input left"
+                        placeholder="Original Progression Sustained Version" id="p_original_prog_sus" readonly="1"
+                        aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+            </div>
+            <div class="col-md-6 div">
+                <div class="input-group flex-nowrap bar">
+                    <input type="text" class="form-control input right" placeholder="New Progression Sustained Version"
+                        id="p_modified_prog_sus" readonly="1" aria-label="Username" aria-describedby="addon-wrapping">
+                    <span class="input-group-text" id="addon-wrapping">Sustained Version</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 div">
+                <div class="input-group flex-nowrap bar">
+                    <span class="input-group-text" id="addon-wrapping">Degree</span>
+                    <input type="text" class="form-control input left" placeholder="Progression Degrees" id="p_degrees"
+                        readonly="1" aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- <label class="switch">
         <input id="checkbox" onchange="changeCheckbox()" type="checkbox">
         <span class="slider round"></span>
@@ -137,23 +198,31 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4 description">
                     <a href="">Help<i style="display: none;" class="fa-solid fa-question"></i></a>
-                    <a href="">Send Feedback<i style="display: none;" class="fa-solid fa-envelope"></i></a>
+                    <a href="mailto:davidpingitzer7@gmail.com">Send Feedback<i style="display: none;"
+                            class="fa-solid fa-envelope"></i></a>
                     <a href="">Info<i style="display: none;" class="fa-solid fa-info"></i></a>
-                    <a href="">Buy me a coffe<i style="display: none;" class="fa-solid fa-mug-saucer"></i></a>
-                    <p style="display: none;">Scale Converter is a free, open-source website made with the goal of simplifying music production for everyone! Provide your scale tonics and a degree or note progression of your choice and let the site handle the rest!</p>
+                    <a target="_blank" href="https://paypal.me/Pingitzergggg">Buy me a coffe<i style="display: none;"
+                            class="fa-solid fa-mug-saucer"></i></a>
+                    <p style="display: none;">Scale Converter is a free, open-source website made with the goal of
+                        simplifying music production for everyone! Provide your scale tonics and a degree or note
+                        progression of your choice and let the site handle the rest!</p>
                 </div>
                 <div class="col-md-4 github">
-                    <h2><i class="fa-brands fa-github"></i><a target="_blank" href="https://github.com/Pingitzergggg">Pingitzergggg</a></h2>
+                    <h2><i class="fa-brands fa-github"></i><a target="_blank"
+                            href="https://github.com/Pingitzergggg">Pingitzergggg</a></h2>
                     <p>For similar programs</p>
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-md-12 contact">
-                    <p>Made by <a target="_blank" href="https://linktr.ee/pingitzergggg">Pingitzer Dávid</a>©</p>
+                    <p id="github-mini"><i class="fa-brands fa-github"></i><a target="_blank"
+                            href="https://github.com/Pingitzergggg">Pingitzergggg</a></p>
+                    <p>Made by <a target="_blank" href="https://linktr.ee/pingitzergggg">Pingitzer Dávid</a> ©</p>
                 </div>
             </div>
         </div>
     </footer>
 </body>
+
 </html>
