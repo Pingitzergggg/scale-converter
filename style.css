@@ -4,6 +4,15 @@ body {
     flex-direction: column;
 }
 
+#logo {
+    transition: 1s;
+}
+
+#logo:hover {
+    transition: 1s;
+    transform: scale(1.05) rotate(90deg);
+}
+
 nav {
     color: whitesmoke;
 }
@@ -21,8 +30,26 @@ nav a {
     margin-bottom: 3%;
 }
 
+.gadgets {
+    display: flex;
+    justify-content: space-between;
+}
+
 .div {
     margin: 10px 0;
+}
+
+.label {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.error {
+    display: none;
+    color: red;
 }
 
 .btn {
@@ -36,9 +63,9 @@ nav a {
 
 .btn:hover {
     transition: 1s;
-    background-color: rgb(211, 29, 29);
+    background-color: rgba(211, 29, 29, 0.6);
     color: whitesmoke;
-    transform: scale(1.05);
+    transform: scale(1.01);
     height: 50px;
     border: none;
 }
@@ -151,14 +178,28 @@ footer a:hover {
         display: flex;
         justify-content: space-between;
     }
+
+    .gadgets {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    nav .gadgets .theme {
+        margin: 0;
+    }
+
 }
 
 @media screen and (min-width: 991px) {
     #github-mini {
         display: none;
     }
-
+    
     .fullscreen {
         display: inline;
+    }
+
+    nav .gadgets .theme {
+        margin-right: 30px;
     }
 }

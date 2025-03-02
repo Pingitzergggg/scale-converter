@@ -28,12 +28,20 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <!-- <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
-                <i style="color: rgb(211,29,29);" class="fa-solid fa-arrows-rotate"></i> ScaleConvert
+                <!-- <i class="fa-solid fa-sun"></i> -->
+                <i id="logo" style="color: rgb(211,29,29);" class="fa-solid fa-arrows-rotate"></i> ScaleConvert
             </a>
-            <div class="fullscreen">
-                <a style="cursor: pointer; font-size: 20px;">
-                    <i class="fa-solid fa-expand"></i>
-                </a>
+            <div class="gadgets">
+                <div class="theme">
+                    <a style="cursor: pointer; font-size: 20px;">
+                        <i class="fa-solid fa-moon"></i>
+                    </a>
+                </div>
+                <div class="fullscreen">
+                    <a style="cursor: pointer; font-size: 20px;">
+                        <i class="fa-solid fa-expand"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -116,17 +124,58 @@
                 <button type="button" class="btn convert" onclick="convert()">Convert</button>
             </div>
         </div>
-        <div style="text-align: center;" class="row">
+        <div style="text-align: center; display: none;" id="values" class="row">
             <div class="col-md-12">
-                <p>Degrees: <a id="p_degrees"></a></p>
-                <p>Original Progression: <a id="p_original_prog"></a></p>
-                <p>Modified Progression: <a id="p_modified_prog"></a></p>
+                <p>Degrees: <a></a></p>
+                <p>Original Progression: <a></a></p>
+                <p>Modified Progression: <a></a></p>
                 <button type="button" class="btn" onclick="changeShowSus()">Show sus chords</button>
             </div>
             <div class="col-md-12" id="sus_div">
                 <p style="text-align: center; font-weight: bold;">Compatible sus chords: </p>
-                <p>Original Progression: <a id="p_original_prog_sus"></a></p>
-                <p>Modified Progression: <a id="p_modified_prog_sus"></a></p>
+                <p>Original Progression: <a></a></p>
+                <p>Modified Progression: <a></a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 div">
+                <div class="input-group flex-nowrap bar">
+                    <span class="input-group-text" id="addon-wrapping">Og. Prog.</span>
+                    <input type="text" class="form-control input left" placeholder="Original Progression" id="p_original_prog" readonly="1"
+                        aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+            </div>
+            <div class="col-md-6 div">
+                <div class="input-group flex-nowrap bar">
+                    <input type="text" class="form-control input right" placeholder="New Progression" id="p_modified_prog" readonly="1"
+                        aria-label="Username" aria-describedby="addon-wrapping">
+                    <span class="input-group-text" id="addon-wrapping">New Prog.</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 div">
+                <div class="input-group flex-nowrap bar">
+                    <span class="input-group-text" id="addon-wrapping">Sustained Version</span>
+                    <input type="text" class="form-control input left" placeholder="Original Progression Sustained Version" id="p_original_prog_sus" readonly="1"
+                        aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+            </div>
+            <div class="col-md-6 div">
+                <div class="input-group flex-nowrap bar">
+                    <input type="text" class="form-control input right" placeholder="New Progression Sustained Version" id="p_modified_prog_sus" readonly="1"
+                        aria-label="Username" aria-describedby="addon-wrapping">
+                    <span class="input-group-text" id="addon-wrapping">Sustained Version</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 div">
+                <div class="input-group flex-nowrap bar">
+                    <span class="input-group-text" id="addon-wrapping">Degree</span>
+                    <input type="text" class="form-control input left" placeholder="Progression Degrees" id="p_degrees" readonly="1"
+                        aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
             </div>
         </div>
     </div>  

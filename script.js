@@ -194,21 +194,21 @@ function convert() {
                 original_prog[i] = original_prog[i].toUpperCase();
             }
             degFinder(original_prog); console.log("degree = "+degree);
-            document.getElementById("p_degrees").innerHTML = degTrans(degree).join("-");
+            document.getElementById("p_degrees").value = degTrans(degree).join("-");
             progFinder(modified_scale, modified_prog); console.log("modified_prog = "+modified_prog);
-            document.getElementById("p_original_prog").innerHTML = progChordify(original_prog, original_chords).join("-");
-            document.getElementById("p_modified_prog").innerHTML = progChordify(modified_prog, modified_chords).join("-");
-            document.getElementById("p_original_prog_sus").innerHTML = progSussify(original_prog, original_sus_chords).join("-");
-            document.getElementById("p_modified_prog_sus").innerHTML = progSussify(modified_prog, modified_sus_chords).join("-");
+            document.getElementById("p_original_prog").value = progChordify(original_prog, original_chords).join("-");
+            document.getElementById("p_modified_prog").value = progChordify(modified_prog, modified_chords).join("-");
+            document.getElementById("p_original_prog_sus").value = progSussify(original_prog, original_sus_chords).join("-");
+            document.getElementById("p_modified_prog_sus").value = progSussify(modified_prog, modified_sus_chords).join("-");
         } else {
             degree = document.getElementById("prog_degrees").value.split("-"); console.log("degree = "+degree);
-            document.getElementById("p_degrees").innerHTML = degTrans(degree).join("-");
+            document.getElementById("p_degrees").value = degTrans(degree).join("-");
             progFinder(original_scale, original_prog); console.log("original_prog = "+original_prog);
             progFinder(modified_scale, modified_prog); console.log("modified_prog = "+modified_prog);
-            document.getElementById("p_original_prog").innerHTML = progChordify(original_prog, original_chords).join("-");
-            document.getElementById("p_modified_prog").innerHTML = progChordify(modified_prog, modified_chords).join("-");
-            document.getElementById("p_original_prog_sus").innerHTML = progSussify(original_prog, original_sus_chords).join("-");
-            document.getElementById("p_modified_prog_sus").innerHTML = progSussify(modified_prog, modified_sus_chords).join("-");
+            document.getElementById("p_original_prog").value = progChordify(original_prog, original_chords).join("-");
+            document.getElementById("p_modified_prog").value = progChordify(modified_prog, modified_chords).join("-");
+            document.getElementById("p_original_prog_sus").value = progSussify(original_prog, original_sus_chords).join("-");
+            document.getElementById("p_modified_prog_sus").value = progSussify(modified_prog, modified_sus_chords).join("-");
         }
     }
 }

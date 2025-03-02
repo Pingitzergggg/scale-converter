@@ -59,17 +59,4 @@
   
   .slider.round:before {
     border-radius: 50%;
-  } 
-
-.label {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.error {
-  display: none;
-  color: red;
-}
+  }
