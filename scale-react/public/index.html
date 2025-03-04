@@ -2,13 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon2.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+
+    <!-- react links -->
+
     <meta
-      name="description"
-      content="Web site created using create-react-app"
+    name="description"
+    content="Web site created using create-react-app"
     />
+    <!-- <meta name="theme-color" content="#000000" /> -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -24,20 +27,217 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+
+
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/60afc1975e.js" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="style.css">
+
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+  <body onload="setDarkMode(localStorage.getItem('theme'))">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <!-- <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
+          <i id="logo" style="color: rgb(211,29,29);" class="fa-solid fa-arrows-rotate"></i> ScaleConvert
+        </a>
+        <div class="gadgets">
+          <div class="theme">
+            <a onclick="changeDarkMode()" style="cursor: pointer; font-size: 20px;">
+              <i id="favicon_moon" class="fa-solid fa-moon clickable"></i>
+              <i id="favicon_sun" class="fa-solid fa-sun clickable" style="display: none;"></i>
+            </a>
+          </div>
+          <div class="fullscreen">
+            <a onclick="setFullscreen()" style="cursor: pointer; font-size: 20px;">
+              <i class="fa-solid fa-expand clickable"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container" id="main">
+      <div style="text-align: center;" class="row">
+        <div class="col-md-4 div">
+          <div class="input-group flex-nowrap bar">
+            <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-music"></i></span>
+            <input type="text" class="form-control input left" placeholder="Original Tonic" id="original_tonic"
+              onchange="syntaxChecker('original_tonic')" aria-label="Username" aria-describedby="addon-wrapping">
+          </div>
+          <!-- <input type="text" onchange="syntaxChecker('original_tonic')" placeholder="Original Tonic" id="original_tonic"> -->
+          <p id="original_tonic_error" class="error"></p>
+        </div>
+        <div class="col-md-4 div">
+          <select style="text-align: center;" class="form-select form-select-sm bar" onchange="changeModes('original_mode')"
+            id="original_mode">
+            <option value="ionian">Ionian</option>
+            <option value="dorian">Dorian</option>
+            <option value="phrygian">Phrygian</option>
+            <option value="lydian">Lydian</option>
+            <option value="mixylodian">Mixylodian</option>
+            <option value="aeolian">Aeolian</option>
+            <option value="locrian">Locrian</option>
+          </select>
+        </div>
+        <div class="col-md-4 div">
+          <div class="input-group flex-nowrap bar">
+            <input type="text" class="form-control input right" placeholder="Original Scale" id="original_scale"
+              readonly="1" aria-label="Username" aria-describedby="addon-wrapping" disabled>
+            <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-timeline"></i></span>
+          </div>
+          <!-- <input type="text" placeholder="Original Scale" id="original_scale" readonly="1"> -->
+        </div>
+      </div>
+      <div style="text-align: center;" class="row">
+        <div class="col-md-4 div">
+          <div class="input-group flex-nowrap bar">
+            <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-music"></i></span>
+            <input type="text" class="form-control input left" placeholder="New Tonic" id="new_tonic"
+              onchange="syntaxChecker('new_tonic')" aria-label="Username" aria-describedby="addon-wrapping">
+          </div>
+          <!-- <input type="text" onchange="syntaxChecker('new_tonic')" placeholder="New Tonic" id="new_tonic"> -->
+          <p id="new_tonic_error" class="error"></p>
+    
+        </div>
+        <div class="col-md-4 div">
+          <select style="text-align: center;" class="form-select form-select-sm bar" onchange="changeModes('new_mode')"
+            id="new_mode">
+            <option value="ionian">Ionian</option>
+            <option value="dorian">Dorian</option>
+            <option value="phrygian">Phrygian</option>
+            <option value="lydian">Lydian</option>
+            <option value="mixylodian">Mixylodian</option>
+            <option value="aeolian">Aeolian</option>
+            <option value="locrian">Locrian</option>
+          </select>
+        </div>
+        <div class="col-md-4 div">
+          <div class="input-group flex-nowrap bar">
+            <input type="text" class="form-control input right" placeholder="New Scale" id="new_scale" readonly="1"
+              aria-label="Username" aria-describedby="addon-wrapping" disabled>
+            <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-timeline"></i></span>
+          </div>
+          <!-- <input type="text" placeholder="New Scale" id="new_scale" readonly="1"> -->
+        </div>
+      </div>
+      <div style="text-align: center;" class="row">
+        <div class="col-md-8 label div">
+          <div class="input-group flex-nowrap bar" id="prog_degrees_div">
+            <span style="cursor: pointer;" onclick="changeCheckbox()" class="input-group-text" id="addon-wrapping"><i
+                class="fa-solid fa-right-left clickable"></i></span>
+            <input type="text" class="form-control input left" style="display: none;" placeholder="Prog. Degrees" id="prog_degrees"
+              onchange="syntaxChecker('prog_degrees')" aria-label="Username" aria-describedby="addon-wrapping">
+            <input type="text" class="form-control input left" placeholder="Prog. Notes" id="prog_notes"
+              onchange="syntaxChecker('prog_notes')" aria-label="Username" aria-describedby="addon-wrapping">
+          </div>
+          <p id="prog_notes_error" class="error"></p>
+          <p id="prog_degrees_error" class="error"></p>
+        </div>
+        <div class="col-md-4 bar div">
+          <button type="button" class="btn convert" onclick="convert()">Convert</button>
+        </div>
+      </div>
+      <div style="text-align: center; display: none;" id="values" class="row">
+        <div class="col-md-12">
+          <p>Degrees: <a></a></p>
+          <p>Original Progression: <a></a></p>
+          <p>Modified Progression: <a></a></p>
+          <button type="button" class="btn" onclick="changeShowSus()">Show sus chords</button>
+        </div>
+        <div class="col-md-12" id="sus_div">
+          <p style="text-align: center; font-weight: bold;">Compatible sus chords: </p>
+          <p>Original Progression: <a></a></p>
+          <p>Modified Progression: <a></a></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 div">
+          <div class="input-group flex-nowrap bar">
+            <span class="input-group-text" id="addon-wrapping">Og. Prog.</span>
+            <input type="text" class="form-control input left" placeholder="Original Progression" id="p_original_prog"
+              readonly="1" aria-label="Username" aria-describedby="addon-wrapping" disabled>
+          </div>
+        </div>
+        <div class="col-md-6 div">
+          <div class="input-group flex-nowrap bar">
+            <input type="text" class="form-control input right" placeholder="New Progression" id="p_modified_prog"
+              readonly="1" aria-label="Username" aria-describedby="addon-wrapping" disabled>
+            <span class="input-group-text" id="addon-wrapping">New Prog.</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 div">
+          <div class="input-group flex-nowrap bar">
+            <span class="input-group-text" id="addon-wrapping">Sus. Ver.</span>
+            <input type="text" class="form-control input left" placeholder="Original Progression Sustained Version"
+              id="p_original_prog_sus" readonly="1" aria-label="Username" aria-describedby="addon-wrapping" disabled>
+          </div>
+        </div>
+        <div class="col-md-6 div">
+          <div class="input-group flex-nowrap bar">
+            <input type="text" class="form-control input right" placeholder="New Progression Sustained Version"
+              id="p_modified_prog_sus" readonly="1" aria-label="Username" aria-describedby="addon-wrapping" disabled>
+            <span class="input-group-text" id="addon-wrapping">Sus. Ver.</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 div">
+          <div class="input-group flex-nowrap bar">
+            <span class="input-group-text" id="addon-wrapping">Degree</span>
+            <input type="text" class="form-control input left" placeholder="Progression Degrees" id="p_degrees" readonly="1"
+              aria-label="Username" aria-describedby="addon-wrapping" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <label class="switch">
+            <input id="checkbox" onchange="changeCheckbox()" type="checkbox">
+            <span class="slider round"></span>
+        </label> -->
+    <footer>
+      <script src="script.js"></script>
+      <script src="gadgets.js"></script>
+      <div class="container">
+        <div class="row footer_div">
+          <div class="col-md-4"></div>
+          <div class="col-md-4 description">
+            <a href="">Help<i style="display: none;" class="fa-solid fa-question"></i></a>
+            <a href="mailto:davidpingitzer7@gmail.com">Send Feedback<i style="display: none;"
+                class="fa-solid fa-envelope"></i></a>
+            <a href="">Info<i style="display: none;" class="fa-solid fa-info"></i></a>
+            <a target="_blank" href="https://paypal.me/Pingitzergggg">Buy me a coffe<i style="display: none;"
+                class="fa-solid fa-mug-saucer"></i></a>
+            <p style="display: none;">Scale Converter is a free, open-source website made with the goal of simplifying
+              music production for everyone! Provide your scale tonics and a degree or note progression of your choice and
+              let the site handle the rest!</p>
+          </div>
+          <div class="col-md-4 github">
+            <h2><i class="fa-brands fa-github"></i><a target="_blank"
+                href="https://github.com/Pingitzergggg">Pingitzergggg</a></h2>
+            <p>For similar programs</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12 contact">
+            <p id="github-mini"><i class="fa-brands fa-github"></i><a target="_blank"
+                href="https://github.com/Pingitzergggg">Pingitzergggg</a></p>
+            <p>Made by <a target="_blank" href="https://linktr.ee/pingitzergggg">Pingitzer Dávid</a> ©</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
