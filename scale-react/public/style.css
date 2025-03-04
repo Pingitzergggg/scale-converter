@@ -4,6 +4,7 @@
 }
 
 body {
+    z-index: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -232,4 +233,10 @@ footer a:hover {
     nav .gadgets .theme {
         margin-right: 30px;
     }
+}
+
+.alert-display {
+    position: absolute;
+    z-index: 1;
+    margin: 30vh 30vw;
 }
