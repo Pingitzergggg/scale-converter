@@ -238,9 +238,26 @@ footer a:hover {
 }
 
 .alert-display {
+    display: none;
     height: 100vh;
     width: 100vw;
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     /* margin: 30vh 30vw; */
+}
+
+.h_tonic {
+    /* On
+    transition: 2s;
+    border-radius: 10px;
+    border-color: rgba(211, 29, 29, 0.6);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(211, 29, 29, 0.6);
+    outline: 0 none;
+
+    Off
+    transition: 2s;
+    border-radius: none;
+    border-color: black;
+    box-shadow: none;
+    outline: 0 none; */
 }

@@ -69,7 +69,7 @@
     <div class="container" id="main">
       <div style="text-align: center;" class="row">
         <div class="col-md-4 div">
-          <div class="input-group flex-nowrap bar">
+          <div class="input-group flex-nowrap bar h_tonic">
             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-music"></i></span>
             <input type="text" class="form-control input left" placeholder="Original Tonic" id="original_tonic"
               onchange="syntaxChecker('original_tonic')" aria-label="Username" aria-describedby="addon-wrapping">
@@ -78,7 +78,7 @@
           <p id="original_tonic_error" class="error"></p>
         </div>
         <div class="col-md-4 div">
-          <select style="text-align: center;" class="form-select form-select-sm bar" onchange="changeModes('original_mode')"
+          <select style="text-align: center;" class="form-select form-select-sm bar h_select" onchange="changeModes('original_mode')"
             id="original_mode">
             <option value="ionian">Ionian</option>
             <option value="dorian">Dorian</option>
@@ -90,7 +90,7 @@
           </select>
         </div>
         <div class="col-md-4 div">
-          <div class="input-group flex-nowrap bar">
+          <div class="input-group flex-nowrap bar h_scale">
             <input type="text" class="form-control input right" placeholder="Original Scale" id="original_scale"
               readonly="1" aria-label="Username" aria-describedby="addon-wrapping" disabled>
             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-timeline"></i></span>
@@ -100,7 +100,7 @@
       </div>
       <div style="text-align: center;" class="row">
         <div class="col-md-4 div">
-          <div class="input-group flex-nowrap bar">
+          <div class="input-group flex-nowrap bar h_tonic">
             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-music"></i></span>
             <input type="text" class="form-control input left" placeholder="New Tonic" id="new_tonic"
               onchange="syntaxChecker('new_tonic')" aria-label="Username" aria-describedby="addon-wrapping">
@@ -110,7 +110,7 @@
     
         </div>
         <div class="col-md-4 div">
-          <select style="text-align: center;" class="form-select form-select-sm bar" onchange="changeModes('new_mode')"
+          <select style="text-align: center;" class="form-select form-select-sm bar h_select" onchange="changeModes('new_mode')"
             id="new_mode">
             <option value="ionian">Ionian</option>
             <option value="dorian">Dorian</option>
@@ -122,7 +122,7 @@
           </select>
         </div>
         <div class="col-md-4 div">
-          <div class="input-group flex-nowrap bar">
+          <div class="input-group flex-nowrap bar h_scale">
             <input type="text" class="form-control input right" placeholder="New Scale" id="new_scale" readonly="1"
               aria-label="Username" aria-describedby="addon-wrapping" disabled>
             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-timeline"></i></span>
@@ -133,7 +133,7 @@
       <div style="text-align: center;" class="row">
         <div class="col-md-8 label div">
           <div class="input-group flex-nowrap bar" id="prog_degrees_div">
-            <span style="cursor: pointer;" onclick="changeCheckbox()" class="input-group-text" id="addon-wrapping"><i
+            <span style="cursor: pointer;" onclick="changeCheckbox()" class="input-group-text h_switch" id="addon-wrapping"><i
                 class="fa-solid fa-right-left clickable"></i></span>
             <input type="text" class="form-control input left" style="display: none;" placeholder="Prog. Degrees" id="prog_degrees"
               onchange="syntaxChecker('prog_degrees')" aria-label="Username" aria-describedby="addon-wrapping">
@@ -147,7 +147,7 @@
           <button type="button" class="btn convert" onclick="convert()">Convert</button>
         </div>
       </div>
-      <div style="text-align: center; display: none;" id="values" class="row">
+      <!-- <div style="text-align: center; display: none;" id="values" class="row">
         <div class="col-md-12">
           <p>Degrees: <a></a></p>
           <p>Original Progression: <a></a></p>
@@ -159,17 +159,17 @@
           <p>Original Progression: <a></a></p>
           <p>Modified Progression: <a></a></p>
         </div>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col-md-6 div">
-          <div class="input-group flex-nowrap bar">
+          <div class="input-group flex-nowrap bar h_res_prog">
             <span class="input-group-text" id="addon-wrapping">Og. Prog.</span>
             <input type="text" class="form-control input left" placeholder="Original Progression" id="p_original_prog"
               readonly="1" aria-label="Username" aria-describedby="addon-wrapping" disabled>
           </div>
         </div>
         <div class="col-md-6 div">
-          <div class="input-group flex-nowrap bar">
+          <div class="input-group flex-nowrap bar h_res_prog">
             <input type="text" class="form-control input right" placeholder="New Progression" id="p_modified_prog"
               readonly="1" aria-label="Username" aria-describedby="addon-wrapping" disabled>
             <span class="input-group-text" id="addon-wrapping">New Prog.</span>
@@ -178,14 +178,14 @@
       </div>
       <div class="row">
         <div class="col-md-6 div">
-          <div class="input-group flex-nowrap bar">
+          <div class="input-group flex-nowrap bar h_res_sus">
             <span class="input-group-text" id="addon-wrapping">Sus. Ver.</span>
             <input type="text" class="form-control input left" placeholder="Original Progression Sustained Version"
               id="p_original_prog_sus" readonly="1" aria-label="Username" aria-describedby="addon-wrapping" disabled>
           </div>
         </div>
         <div class="col-md-6 div">
-          <div class="input-group flex-nowrap bar">
+          <div class="input-group flex-nowrap bar h_res_sus">
             <input type="text" class="form-control input right" placeholder="New Progression Sustained Version"
               id="p_modified_prog_sus" readonly="1" aria-label="Username" aria-describedby="addon-wrapping" disabled>
             <span class="input-group-text" id="addon-wrapping">Sus. Ver.</span>
@@ -194,7 +194,7 @@
       </div>
       <div class="row">
         <div class="col-md-8 div">
-          <div class="input-group flex-nowrap bar">
+          <div class="input-group flex-nowrap bar h_res_deg">
             <span class="input-group-text" id="addon-wrapping">Degree</span>
             <input type="text" class="form-control input left" placeholder="Progression Degrees" id="p_degrees" readonly="1"
               aria-label="Username" aria-describedby="addon-wrapping" disabled>
@@ -240,5 +240,5 @@
       </div>
     </footer>
   </body>
-  <div class="alert-display" id="message-02"></div>
+  <div class="alert-display" id="message"></div>
 </html>
