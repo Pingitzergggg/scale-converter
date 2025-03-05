@@ -9,9 +9,10 @@
     }
 
     .alert-button {
-        transition: 1s;
+        transition: 0.5s;
         display: inline-block;
         text-decoration: none;
+        background: transparent;
         color: black;
         border: 1px black solid;
         border-radius: 10px;
@@ -20,7 +21,9 @@
     }
 
     .alert-button:hover {
-        transition: 1s;
+        transition: 0.5s;
         transform: scale(1.05);
+        color: white;
+        background-color: #00000080;
     }
 }

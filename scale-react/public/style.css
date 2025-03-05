@@ -238,5 +238,5 @@ footer a:hover {
 .alert-display {
     position: absolute;
     z-index: 1;
-    margin: 30vh 30vw;
+    /* margin: 30vh 30vw; */
 }
