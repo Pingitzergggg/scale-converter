@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import './alert.css';
 
-const root = ReactDOM.createRoot(document.getElementById('message-01'));
+const root = ReactDOM.createRoot(document.getElementById('message-02'));
 
 root.render(
     <div style={{textAlign: "center"}} className="alert-center">
