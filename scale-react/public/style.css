@@ -238,7 +238,7 @@ footer a:hover {
 }
 
 .alert-display {
-    display: none;
+    display: inline-block;
     height: 100vh;
     width: 100vw;
     position: absolute;
