@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import './alert.css';
 
+const message = document.getElementById('message');
 const root = ReactDOM.createRoot(document.getElementById('message'));
 
 let text = ["text1", "text2"];
@@ -43,14 +44,19 @@ function increaseLevel() {
     level++;
   }
   if (level == 1) {
+    message.style = 'display: block';
     root.render(Message("flex-start", level));
   } else if (level == 2) {
+    message.style = 'display: block';
     root.render(Message("center", level));
   } else if (level == 3) {
+    message.style = 'display: block';
     root.render(Message("center", level))
   } else if (level == 4) {
+    message.style = 'display: block';
     root.render(Message("flex-end", level));
   } else {
+    message.style = 'display: none';
     isRunnable = false; //localstorage update
     root.render(<></>);
   }
