@@ -47,6 +47,5 @@
     .cancel:hover {
         transition: 0.5s;
         transform: scale(1.5);
-        color: white;
     }
 }
