@@ -9,8 +9,8 @@ const root = ReactDOM.createRoot(document.getElementById('message'));
 let text = ["text1", "text2"];
 let title = ["title1", "title2"];
 
-let isRunnable = true; console.log(isRunnable)
-let level = 0; /*(localStorage.getItem('tutorial') == 'true') ? 1 : 0*/
+let isRunnable = true; console.log(isRunnable); /* localstorage */
+let level = 0;
 
 function setStyleSheet(pos) { /*position of the div*/
   if (level == 0) {
@@ -39,21 +39,21 @@ function highLighter(x) {
   element.style = "transition: 2s; border-radius: none; border-color: black; box-shadow: none; outline: 0 none;";
 }
 
-function increaseLevel() {
+function increaseLevel(level) {
   if (level < 5) {
     level++;
   }
   if (level == 1) {
-    message.style = 'display: block';
+    // message.style = 'display: block';
     root.render(Message("flex-start", level));
   } else if (level == 2) {
-    message.style = 'display: block';
+    // message.style = 'display: block';
     root.render(Message("center", level));
   } else if (level == 3) {
-    message.style = 'display: block';
+    // message.style = 'display: block';
     root.render(Message("center", level))
   } else if (level == 4) {
-    message.style = 'display: block';
+    // message.style = 'display: block';
     root.render(Message("flex-end", level));
   } else {
     message.style = 'display: none';
@@ -70,11 +70,11 @@ function Message(pos, level) {
       <div className='col-md-4'>
         <div style={{textAlign: "center"}} className="alert-center">
           <div style={{display: "flex", justifyContent: "flex-end"}}>
-          <a onClick={() => {level = 5; root.render(<></>)}} className='cancel'><i class="fa-solid fa-xmark"></i></a>
+          <a onClick={() => increaseLevel(5)} className='cancel'><i class="fa-solid fa-xmark"></i></a>
           </div>
           <h3>{title[level]}</h3>
           <p>{text[level]}</p>
-          <a onClick={increaseLevel} className="alert-button">Next</a>
+          <a onClick={() => increaseLevel(level)} className="alert-button">Next</a>
         </div>
       </div>
     </div>
