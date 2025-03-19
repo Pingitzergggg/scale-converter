@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import './alert.css';
+import './coffee.css';
 
 const message = document.getElementById('message');
 const root = ReactDOM.createRoot(document.getElementById('message'));
@@ -35,8 +36,10 @@ function setStyleSheet(pos) { /*position of the div*/
 }
 
 function highLighter(x) {
-  const element = document.getElementsByClassName(x);
-  element.style = "transition: 2s; border-radius: none; border-color: black; box-shadow: none; outline: 0 none;";
+  const allInputs = document.getElementsByTagName("input");
+  const elements = document.getElementsByClassName(x);
+  allInputs.style = "transition: 2s; border-color: black; box-shadow: none; outline: 0 none;"; 
+  elements.style = "transition: 2s; border-color: rgba(211, 29, 29, 0.6); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(211, 29, 29, 0.6); outline: 0 none;";
 }
 
 function increaseLevel() {
@@ -74,11 +77,64 @@ function Message(pos, lvl) {
           </div>
           <h3>{title[lvl]}</h3>
           <p>{text[lvl]}</p>
-          <a onClick={() => increaseLevel()} className="alert-button">Next</a>
+          <a onClick={() => {increaseLevel()}} className="alert-button">Next</a>
         </div>
       </div>
     </div>
   </div>
+  )
+}
+
+function infoPanel() {
+  return (
+  <div className='container'>
+    <div className='row' style={setStyleSheet("center")}>
+      <div className='col-md-4'>
+        <div style={{textAlign: "center"}} className="alert-center">
+          <div style={{display: "flex", justifyContent: "flex-end"}}>
+          <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i class="fa-solid fa-xmark"></i></a>
+          </div>
+          <h3>Technologies Used</h3>
+          <p>
+            <ul>
+              <li>HTML5 & CSS3</li>
+              <li>JSX</li>
+              <li>React</li>
+              <li>Bootstrap</li>
+              <li>Fontawesome</li>
+            </ul>
+            Note: This site is <strong>open source</strong>. Meaning that the code of the page is freely availbe on my <a href='https://github.com/Pingitzergggg'>Github</a>
+          </p>
+          <a onClick={() => {level = 5; increaseLevel()}} className="alert-button">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  )
+}
+
+function giveMeCoffee() {
+  return (
+    <div className='container'>
+      <div className='row' style={setStyleSheet("center")}>
+        <div className='col-md-6'>
+          <div style={{textAlign: "left"}} className="alert-center">
+            <div style={{display: "flex", justifyContent: "flex-end"}}>
+              <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i class="fa-solid fa-xmark"></i></a>
+            </div>
+            <div className='coffee-div'>
+              <div>
+                <h3>Like the Site?<br/>Buy Me a Coffee!</h3>
+                <p>If you like my programs please support my work with a subtle donation!<br/>
+                   Your help is much appreciated!</p>
+                <a onClick={() => {increaseLevel()}} className="alert-button">Sure!</a>
+              </div>
+              <div><svg><path></path></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -89,7 +145,7 @@ function Message(pos, lvl) {
 //   root.render(<></>);
 // }
 
-root.render(Message("center", level));
+root.render(giveMeCoffee());
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
