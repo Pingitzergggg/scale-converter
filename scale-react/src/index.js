@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import './alert.css';
 import './coffee.css';
+import './mug-hot-solid.svg';
 
 const message = document.getElementById('message');
 const root = ReactDOM.createRoot(document.getElementById('message'));
@@ -129,7 +130,7 @@ function giveMeCoffee() {
                    Your help is much appreciated!</p>
                 <a onClick={() => {increaseLevel()}} className="alert-button">Sure!</a>
               </div>
-              <div><svg><path></path></svg></div>
+              <div><img src='mug-hot-solid.svg' /></div>
             </div>
           </div>
         </div>
