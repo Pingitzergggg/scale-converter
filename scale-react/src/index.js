@@ -6,8 +6,8 @@ import './alert.css';
 const message = document.getElementById('message');
 const root = ReactDOM.createRoot(document.getElementById('message'));
 
-let text = ["text1", "text2"];
-let title = ["title1", "title2"];
+let text = ["step1", "step2", "step3", "step4", "step5"];
+let title = ["title1", "title2", "title3", "title4", "title5"];
 
 let isRunnable = true; console.log(isRunnable); /* localstorage */
 let level = 0;
@@ -39,7 +39,7 @@ function highLighter(x) {
   element.style = "transition: 2s; border-radius: none; border-color: black; box-shadow: none; outline: 0 none;";
 }
 
-function increaseLevel(level) {
+function increaseLevel() {
   if (level < 5) {
     level++;
   }
@@ -63,18 +63,18 @@ function increaseLevel(level) {
   console.log(level);
 }
 
-function Message(pos, level) {
+function Message(pos, lvl) {
   return (
   <div className='container'>
     <div className='row' style={setStyleSheet(pos)}>
       <div className='col-md-4'>
         <div style={{textAlign: "center"}} className="alert-center">
           <div style={{display: "flex", justifyContent: "flex-end"}}>
-          <a onClick={() => increaseLevel(5)} className='cancel'><i class="fa-solid fa-xmark"></i></a>
+          <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i class="fa-solid fa-xmark"></i></a>
           </div>
-          <h3>{title[level]}</h3>
-          <p>{text[level]}</p>
-          <a onClick={() => increaseLevel(level)} className="alert-button">Next</a>
+          <h3>{title[lvl]}</h3>
+          <p>{text[lvl]}</p>
+          <a onClick={() => increaseLevel()} className="alert-button">Next</a>
         </div>
       </div>
     </div>
