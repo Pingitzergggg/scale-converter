@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import './alert.css';
 import './coffee.css';
-import './mug-hot-solid.svg';
+import mug from './mug-hot-solid.svg';
 
 const message = document.getElementById('message');
 const root = ReactDOM.createRoot(document.getElementById('message'));
@@ -119,7 +119,7 @@ function giveMeCoffee() {
     <div className='container'>
       <div className='row' style={setStyleSheet("center")}>
         <div className='col-md-6'>
-          <div style={{textAlign: "left"}} className="alert-center">
+          <div style={{textAlign: "left"}} className="alert-center coffee-center">
             <div style={{display: "flex", justifyContent: "flex-end"}}>
               <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i class="fa-solid fa-xmark"></i></a>
             </div>
@@ -128,9 +128,9 @@ function giveMeCoffee() {
                 <h3>Like the Site?<br/>Buy Me a Coffee!</h3>
                 <p>If you like my programs please support my work with a subtle donation!<br/>
                    Your help is much appreciated!</p>
-                <a onClick={() => {increaseLevel()}} className="alert-button">Sure!</a>
+                <a target='_blank' href='https://paypal.me/Pingitzergggg' className="coffee-button">Sure!</a>
               </div>
-              <div><img src='mug-hot-solid.svg' /></div>
+              <div><img src={mug} /></div>
             </div>
           </div>
         </div>
