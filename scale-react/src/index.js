@@ -11,7 +11,8 @@ const root = ReactDOM.createRoot(document.getElementById('message'));
 let text = ["step1", "step2", "step3", "step4", "step5"];
 let title = ["title1", "title2", "title3", "title4", "title5"];
 
-let isRunnable = true; console.log(isRunnable); /* localstorage */
+// let isRunnable = true; console.log(isRunnable); /* localstorage */
+let localValue = localStorage.getItem("popup");
 let level = 0;
 
 function setStyleSheet(pos) { /*position of the div*/
@@ -60,8 +61,9 @@ function increaseLevel() {
     // message.style = 'display: block';
     root.render(Message("flex-end", level));
   } else {
+    localStorage.setItem("popup", "null");
     message.style = 'display: none';
-    isRunnable = false; //localstorage update
+    localValue = localStorage.getItem("popup"); //localstorage update
     root.render(<></>);
   }
   console.log(level);
@@ -90,23 +92,22 @@ function infoPanel() {
   return (
   <div className='container'>
     <div className='row' style={setStyleSheet("center")}>
-      <div className='col-md-4'>
-        <div style={{textAlign: "center"}} className="alert-center">
+      <div className='col-lg-4'>
+        <div style={{textAlign: "center"}} className="alert-center info-center">
           <div style={{display: "flex", justifyContent: "flex-end"}}>
-          <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i class="fa-solid fa-xmark"></i></a>
+            <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i class="fa-solid fa-xmark"></i></a>
           </div>
           <h3>Technologies Used</h3>
+          <ul>
+            <li>HTML5 & CSS3</li>
+            <li>JSX</li>
+            <li>React</li>
+            <li>Bootstrap</li>
+            <li>Fontawesome</li>
+          </ul>
           <p>
-            <ul>
-              <li>HTML5 & CSS3</li>
-              <li>JSX</li>
-              <li>React</li>
-              <li>Bootstrap</li>
-              <li>Fontawesome</li>
-            </ul>
             Note: This site is <strong>open source</strong>. Meaning that the code of the page is freely availbe on my <a href='https://github.com/Pingitzergggg'>Github</a>
           </p>
-          <a onClick={() => {level = 5; increaseLevel()}} className="alert-button">Close</a>
         </div>
       </div>
     </div>
@@ -125,12 +126,12 @@ function giveMeCoffee() {
             </div>
             <div className='coffee-div'>
               <div>
-                <h3>Like the Site?<br/>Buy Me a Coffee!</h3>
+                <h3>Like the Site?<br/>Buy Me a Coffee!<br/><i class="fa-solid fa-mug-hot coffee-mini"></i></h3>
                 <p>If you like my programs please support my work with a subtle donation!<br/>
                    Your help is much appreciated!</p>
                 <a target='_blank' href='https://paypal.me/Pingitzergggg' className="coffee-button">Sure!</a>
               </div>
-              <div><img src={mug} /></div>
+              <div className='coffee-img'><img src={mug} /></div>
             </div>
           </div>
         </div>
@@ -139,14 +140,20 @@ function giveMeCoffee() {
   )
 }
 
+console.log("localStorage: "+localValue);
+if (localValue === null || localValue == "null") {
+  level= 5;
+  increaseLevel();
+} else {
+  if (localValue == "message") {
+    root.render(Message("center", 0));
+  } else if (localValue == "infopanel") {
+    root.render(infoPanel());
+  } else if (localValue == "coffee"){
+    root.render(giveMeCoffee());
+  }
+}
 
-// if (isRunnable) {
-//   root.render(Message("center", level));
-// } else {
-//   root.render(<></>);
-// }
-
-root.render(giveMeCoffee());
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

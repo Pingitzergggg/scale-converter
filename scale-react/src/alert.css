@@ -49,3 +49,27 @@
         transform: scale(1.5);
     }
 }
+
+.info-center {
+    text-align: left !important;
+
+    p {
+        font-size: 13px;
+        font-style: italic;
+        margin: 10px 0 25px 0;
+        a {
+            text-decoration: none;
+            color: rgb(33, 37, 41);
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 1rem;
+    }
+}
