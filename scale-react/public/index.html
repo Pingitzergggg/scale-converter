@@ -67,6 +67,9 @@
     </nav>
     
     <div class="container" id="main">
+
+      <!-- og scale row -->
+
       <div style="text-align: center;" class="row">
         <div class="col-md-4 div">
           <div class="input-group flex-nowrap bar h_tonic">
@@ -98,6 +101,9 @@
           <!-- <input type="text" placeholder="Original Scale" id="original_scale" readonly="1"> -->
         </div>
       </div>
+
+      <!-- modded scale row -->
+
       <div style="text-align: center;" class="row">
         <div class="col-md-4 div">
           <div class="input-group flex-nowrap bar h_tonic">
@@ -130,11 +136,14 @@
           <!-- <input type="text" placeholder="New Scale" id="new_scale" readonly="1"> -->
         </div>
       </div>
+
+      <!-- convert row -->
+
       <div style="text-align: center;" class="row">
         <div class="col-md-8 label div">
           <div class="input-group flex-nowrap bar" id="prog_degrees_div">
             <span style="cursor: pointer;" onclick="changeCheckbox()" class="input-group-text h_switch" id="addon-wrapping"><i
-                class="fa-solid fa-right-left clickable"></i></span>
+                class="fa-solid fa-right-left clickable arrows"></i></span>
             <input type="text" class="form-control input left" style="display: none;" placeholder="Prog. Degrees" id="prog_degrees"
               onchange="syntaxChecker('prog_degrees')" aria-label="Username" aria-describedby="addon-wrapping">
             <input type="text" class="form-control input left" placeholder="Prog. Notes" id="prog_notes"
@@ -147,20 +156,10 @@
           <button type="button" class="btn convert" onclick="convert()">Convert</button>
         </div>
       </div>
-      <!-- <div style="text-align: center; display: none;" id="values" class="row">
-        <div class="col-md-12">
-          <p>Degrees: <a></a></p>
-          <p>Original Progression: <a></a></p>
-          <p>Modified Progression: <a></a></p>
-          <button type="button" class="btn" onclick="changeShowSus()">Show sus chords</button>
-        </div>
-        <div class="col-md-12" id="sus_div">
-          <p style="text-align: center; font-weight: bold;">Compatible sus chords: </p>
-          <p>Original Progression: <a></a></p>
-          <p>Modified Progression: <a></a></p>
-        </div>
-      </div> -->
-      <div class="row">
+
+      <!-- result section: progs -->
+
+      <div class="row" id="progs">
         <div class="col-md-6 div">
           <div class="input-group flex-nowrap bar h_res_prog">
             <span class="input-group-text" id="addon-wrapping">Og. Prog.</span>
@@ -176,6 +175,9 @@
           </div>
         </div>
       </div>
+
+      <!-- result section: sus progs -->
+
       <div class="row">
         <div class="col-md-6 div">
           <div class="input-group flex-nowrap bar h_res_sus">
@@ -192,6 +194,9 @@
           </div>
         </div>
       </div>
+
+      <!-- result section: degrees -->
+
       <div class="row">
         <div class="col-md-8 div">
           <div class="input-group flex-nowrap bar h_res_deg">
@@ -202,10 +207,9 @@
         </div>
       </div>
     </div>
-    <!-- <label class="switch">
-            <input id="checkbox" onchange="changeCheckbox()" type="checkbox">
-            <span class="slider round"></span>
-        </label> -->
+
+    <!-- footer -->
+
     <footer>
       <script src="script.js"></script>
       <script src="gadgets.js"></script>

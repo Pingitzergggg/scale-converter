@@ -34,3 +34,7 @@ function changeDarkMode() {
     theme = localStorage.getItem('theme');
     setDarkMode(theme); console.log("Changed theme to: "+theme);
 }
+
+window.setTimeout(function () { 
+    document.getElementById('progs').focus(); 
+}, 0); 
