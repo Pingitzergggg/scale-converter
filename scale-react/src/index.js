@@ -76,7 +76,7 @@ function Message(pos, lvl) {
       <div className='col-md-4'>
         <div style={{textAlign: "center"}} className="alert-center">
           <div style={{display: "flex", justifyContent: "flex-end"}}>
-          <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i class="fa-solid fa-xmark"></i></a>
+          <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i className="fa-solid fa-xmark"></i></a>
           </div>
           <h3>{title[lvl]}</h3>
           <p>{text[lvl]}</p>
