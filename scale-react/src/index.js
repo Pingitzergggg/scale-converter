@@ -6,7 +6,9 @@ import './coffee.css';
 import mug from './mug-hot-solid.svg';
 
 const message = document.getElementById('message');
+const coffee = document.getElementById('coffee');
 const root = ReactDOM.createRoot(document.getElementById('message'));
+const root2 = ReactDOM.createRoot(document.getElementById('coffee'));
 
 let text = ["step1", "step2", "step3", "step4", "step5"];
 let title = ["title1", "title2", "title3", "title4", "title5"];
@@ -69,6 +71,18 @@ function increaseLevel() {
   console.log(level);
 }
 
+function cancelCoffee() {
+  coffee.style = "display: none";
+  root2.render(<></>);
+}
+
+function timer(x) {
+  window.setTimeout(function () {
+    coffee.style = "display: inline-block";
+    root2.render(giveMeCoffee());
+  }, x);
+}
+
 function Message(pos, lvl) {
   return (
   <div className='container'>
@@ -95,7 +109,7 @@ function infoPanel() {
       <div className='col-lg-4'>
         <div style={{textAlign: "center"}} className="alert-center info-center">
           <div style={{display: "flex", justifyContent: "flex-end"}}>
-            <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i class="fa-solid fa-xmark"></i></a>
+            <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i className="fa-solid fa-xmark"></i></a>
           </div>
           <h3>Technologies Used</h3>
           <ul>
@@ -122,14 +136,14 @@ function giveMeCoffee() {
         <div className='col-md-6'>
           <div style={{textAlign: "left"}} className="alert-center coffee-center">
             <div style={{display: "flex", justifyContent: "flex-end"}}>
-              <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i class="fa-solid fa-xmark"></i></a>
+              <a onClick={() => {cancelCoffee(); timer(600000)}} className='cancel'><i className="fa-solid fa-xmark"></i></a>
             </div>
             <div className='coffee-div'>
               <div>
-                <h3>Like the Site?<br/>Buy Me a Coffee!<br/><i class="fa-solid fa-mug-hot coffee-mini"></i></h3>
+                <h3>Like the Site?<br/>Buy Me a Coffee!<br/><i className="fa-solid fa-mug-hot coffee-mini"></i></h3>
                 <p>If you like my programs please support my work with a subtle donation!<br/>
                    Your help is much appreciated!</p>
-                <a target='_blank' href='https://paypal.me/Pingitzergggg' className="coffee-button">Sure!</a>
+                <a onClick={() => {cancelCoffee(); timer(600000)}} target='_blank' href='https://paypal.me/Pingitzergggg' className="coffee-button">Sure!</a>
               </div>
               <div className='coffee-img'><img src={mug} /></div>
             </div>
@@ -140,6 +154,8 @@ function giveMeCoffee() {
   )
 }
 
+timer(2000);
+// root2.render(giveMeCoffee());
 console.log("localStorage: "+localValue);
 if (localValue === null || localValue == "null") {
   level= 5;
@@ -149,11 +165,12 @@ if (localValue === null || localValue == "null") {
     root.render(Message("center", 0));
   } else if (localValue == "infopanel") {
     root.render(infoPanel());
-  } else if (localValue == "coffee"){
-    root.render(giveMeCoffee());
   }
 }
 
+
+
+// root.render(giveMeCoffee()) //this isnt working for some reason - also check focus() with kadam
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -35,6 +35,6 @@ function changeDarkMode() {
     setDarkMode(theme); console.log("Changed theme to: "+theme);
 }
 
-window.setTimeout(function () { 
-    document.getElementById('progs').focus(); 
-}, 0); 
+// window.setTimeout(function () { 
+//     document.getElementById('progs').focus(); 
+// }, 0); 

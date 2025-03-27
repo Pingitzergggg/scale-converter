@@ -19,7 +19,6 @@
     }
 
     .alert-button {
-        transition: 0.5s;
         display: inline-block;
         text-decoration: none;
         background: transparent;
@@ -31,7 +30,6 @@
     }
 
     .alert-button:hover {
-        transition: 0.5s;
         transform: scale(1.05);
         color: wheat;
         background-color: #00000080;
