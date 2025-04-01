@@ -6,6 +6,12 @@
       transform: rotate(360deg);
     }
   }
+  
+.row-alert {
+    display: flex;
+    align-items: center !important;
+    justify-content: center;
+}
 
 .alert-center {
     background-color: rgba(211, 29, 29, 0.6);

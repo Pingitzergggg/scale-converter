@@ -245,20 +245,20 @@ footer a:hover {
     }
 }
 
-.alert-display {
+.display {
     display: inline-block;
     height: 100vh;
     width: 100vw;
     position: absolute;
-    z-index: 1;
+    /* display: inline-block; */
     /* margin: 30vh 30vw; */
 }
 
+.alert-display {
+    z-index: 1;
+}
+
 .coffee-display {
-    display: inline-block;
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
     z-index: 2;
 }
 

@@ -132,11 +132,11 @@ function infoPanel() {
 function giveMeCoffee() {
   return (
     <div className='container'>
-      <div className='row' style={setStyleSheet("center")}>
+      <div className='row row-alert' style={setStyleSheet("center")}>
         <div className='col-md-6'>
           <div style={{textAlign: "left"}} className="alert-center coffee-center">
             <div style={{display: "flex", justifyContent: "flex-end"}}>
-              <a onClick={() => {cancelCoffee(); timer(600000)}} className='cancel'><i className="fa-solid fa-xmark"></i></a>
+              <a onClick={() => {cancelCoffee(); timer(2000)}} className='cancel'><i className="fa-solid fa-xmark"></i></a>
             </div>
             <div className='coffee-div'>
               <div>
