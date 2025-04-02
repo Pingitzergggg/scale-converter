@@ -1,5 +1,10 @@
+document.getElementById('p_degrees').value = '';
+document.getElementById('p_original_prog').value = '';
+document.getElementById('p_modified_prog').value = '';
+document.getElementById('p_original_prog_sus').value = '';
+document.getElementById('p_modified_prog_sus').value = '';
 document.getElementById("prog_degrees").style = "display: none;";
-document.getElementById("sus_div").style = "display: none;";
+// document.getElementById("sus_div").style = "display: none;";
 document.getElementById("original_tonic").value = "";
 document.getElementById("original_scale").value = "";
 document.getElementById("new_tonic").value = "";
