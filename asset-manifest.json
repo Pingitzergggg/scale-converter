@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "./static/css/main.a99397ef.css",
+    "main.js": "./static/js/main.a97edef3.js",
+    "static/js/453.54d653fb.chunk.js": "./static/js/453.54d653fb.chunk.js",
+    "index.html": "./index.html",
+    "static/media/mug-hot-solid.svg": "./static/media/mug-hot-solid.06448240e852fea74ad14c5e9295a579.svg",
+    "main.a99397ef.css.map": "./static/css/main.a99397ef.css.map",
+    "main.a97edef3.js.map": "./static/js/main.a97edef3.js.map",
+    "453.54d653fb.chunk.js.map": "./static/js/453.54d653fb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a99397ef.css",
+    "static/js/main.a97edef3.js"
+  ]
+}
