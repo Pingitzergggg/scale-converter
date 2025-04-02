@@ -148,7 +148,7 @@ function giveMeCoffee() {
         <div className='col-md-6'>
           <div style={{textAlign: "left"}} className="alert-center coffee-center">
             <div style={{display: "flex", justifyContent: "flex-end"}}>
-              <a onClick={() => {cancelCoffee(); timer(2000)}} className='cancel'><i className="fa-solid fa-xmark"></i></a>
+              <a onClick={() => {cancelCoffee(); timer(600000)}} className='cancel'><i className="fa-solid fa-xmark"></i></a>
             </div>
             <div className='coffee-div'>
               <div>
@@ -167,7 +167,7 @@ function giveMeCoffee() {
 }
 
 cancelCoffee();
-// timer(2000);
+timer(600000);
 // root2.render(giveMeCoffee());
 console.log("localStorage: "+localValue);
 if (localValue === null || localValue == "null") {
