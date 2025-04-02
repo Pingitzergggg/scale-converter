@@ -12,8 +12,8 @@ const coffee = document.getElementById('coffee');
 const root = ReactDOM.createRoot(document.getElementById('message'));
 const root2 = ReactDOM.createRoot(document.getElementById('coffee'));
 
-let text = ["step1", "step2", "step3", "step4", "step5"];
-let title = ["title1", "title2", "title3", "title4", "title5"];
+let text = ["Scale Converter is a free, open-source website made with the goal of simplifying music production for everyone! Provide your scale tonics and a degree or note progression of your choice and let the site handle the rest!", "At the highlighted section you need to provide the first note(tonic) of your scale. You can modify it's location by changing the corresponding mode(default is Ionian)", "After this you need to do the same thing with the new mode that you want your progression to be modified. It works on the same logic as the first section.", "Here you need to provide your progression(only provide the notes, not the chords!). If you want to give the progression by it's degree, you can do that as well by switching to degree mode. For that, just click on the arrow button to the left.", "The result section provides all the neccesary information you need. The chord progression in both scale as well as all the compatible sus chords to use(note: every sus4 compatible notes are also compatible with sus2)"];
+let title = ["Help", "Original Tonic", "New Tonic", "The Progression", "Result Section"];
 
 // let isRunnable = true; console.log(isRunnable); /* localstorage */
 let localValue = localStorage.getItem("popup");
@@ -42,12 +42,19 @@ function setStyleSheet(pos) { /*position of the div*/ /*UPDATE: This used to mov
 }
 
 function highLighter(x) {
-  // x = x != 0 ? x-1 : x; console.log("lvl index is: " + x);
+  console.log("lvl index is: " + x);
   const elements = document.getElementsByClassName("highlightable");
-  if (x != 0) {
-    elements[x-1].style = "border: none; box-shadow: none";
+  if (x > 0 && x < 4) {
+    if (x-1 != 0) {
+      elements[x-2].style = "border: none; box-shadow: none";
+    }
+    elements[x-1].style = highLighterCssSource;
+  } else if (x == 4) {
+    elements[x-2].style = "border: none; box-shadow: none";
+    elements[x-1].style = highLighterCssSource;
+    elements[x].style = highLighterCssSource;
+    elements[x+1].style = highLighterCssSource;
   }
-  elements[x].style = highLighterCssSource;
 }
 
 function clearHighLighter() {
@@ -57,6 +64,7 @@ function clearHighLighter() {
   }
 }
 
+message.style = "display: inline-block";
 function increaseLevel() {
   if (level < 5) {
     level++;
@@ -74,6 +82,7 @@ function increaseLevel() {
     // message.style = 'display: block';
     root.render(Message("flex-end", level));
   } else {
+    clearHighLighter();
     localStorage.setItem("popup", "null");
     message.style = 'display: none';
     localValue = localStorage.getItem("popup"); //localstorage update
@@ -168,6 +177,7 @@ function giveMeCoffee() {
 
 cancelCoffee();
 timer(600000);
+console.log("react script ran!");
 // root2.render(giveMeCoffee());
 console.log("localStorage: "+localValue);
 if (localValue === null || localValue == "null") {
