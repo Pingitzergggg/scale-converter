@@ -39,6 +39,10 @@
 }
 
 @media screen and (max-width: 1200px) { /*Phone mode*/
+
+    .alert-center {
+        background-color: rgba(211, 29, 29, 0.85);
+    }
     
     .coffee-div {
         text-align: center;

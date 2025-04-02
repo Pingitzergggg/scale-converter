@@ -1,3 +1,17 @@
+@keyframes btn-animation {
+    from {
+            display: none;
+            margin-right: 20px;
+            color: rgb(255, 255, 255, 0);
+            color: transparent;
+    }
+
+    to {
+            margin-right: 5px;
+            color: rgba(255, 255, 255, 1);
+    }
+}
+
 :root {
     --color: whitesmoke;
     --input-color: white;
@@ -84,27 +98,38 @@ nav a {
     /* margin: 10px 0 10px 0; */
     height: 50px;
     border: none;
+
+    .btn-icon {
+        display: none;
+    }
 }
 
+
 .btn:hover {
-    background-color: rgba(211, 29, 29, 0.6);
+    background-color: rgba(211, 29, 29, 1);
     color: whitesmoke;
     /* transform: scale(1.02); */
     height: 50px;
     border: none;
+
+    .btn-icon {
+        display: inline-block;
+        animation: btn-animation 0.5s alternate;
+        margin-right: 5px;
+    }
 }
 
 .input {
     /* background-color: #2b3035; */
 }
 
-.input:focus, .form-select:focus, #progs:focus {
+.input:focus, .form-select:focus, #progs:focus, .highlighted {
     border-color: rgba(211, 29, 29, 0.6);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(211, 29, 29, 0.6);
     outline: 0 none;
 }
 
-.convert {
+.convert, .clear {
     width: inherit;
 }
 

@@ -5,6 +5,8 @@ import './alert.css';
 import './coffee.css';
 import mug from './mug-hot-solid.svg';
 
+const highLighterCssSource = "border-color: rgba(211, 29, 29, 0.6);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(211, 29, 29, 0.6);outline: 0 none;";
+
 const message = document.getElementById('message');
 const coffee = document.getElementById('coffee');
 const root = ReactDOM.createRoot(document.getElementById('message'));
@@ -17,8 +19,8 @@ let title = ["title1", "title2", "title3", "title4", "title5"];
 let localValue = localStorage.getItem("popup");
 let level = 0;
 
-function setStyleSheet(pos) { /*position of the div*/
-  if (level == 0) {
+function setStyleSheet(pos) { /*position of the div*/ /*UPDATE: This used to move the position of the tutorial div, on second tought it looks ugly so I took out*/
+  if (level == 0 || window.innerWidth < 1200) {
     return (
       {
         height: "100vh",
@@ -32,18 +34,27 @@ function setStyleSheet(pos) { /*position of the div*/
       {
         height: "100vh",
         display: "flex",
-        justifyContent: pos,
-        alignItems: "flex-end"
+        justifyContent: "center",
+        alignItems: "center"
       }
     )
   }
 }
 
 function highLighter(x) {
-  const allInputs = document.getElementsByTagName("input");
-  const elements = document.getElementsByClassName(x);
-  allInputs.style = "transition: 2s; border-color: black; box-shadow: none; outline: 0 none;"; 
-  elements.style = "transition: 2s; border-color: rgba(211, 29, 29, 0.6); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(211, 29, 29, 0.6); outline: 0 none;";
+  // x = x != 0 ? x-1 : x; console.log("lvl index is: " + x);
+  const elements = document.getElementsByClassName("highlightable");
+  if (x != 0) {
+    elements[x-1].style = "border: none; box-shadow: none";
+  }
+  elements[x].style = highLighterCssSource;
+}
+
+function clearHighLighter() {
+  const elements = document.getElementsByClassName("highlightable");
+  for(let i = 0; i < elements.length; i++) {
+    elements[i].style = "border: none; box-shadow: none";
+  }
 }
 
 function increaseLevel() {
@@ -84,13 +95,14 @@ function timer(x) {
 }
 
 function Message(pos, lvl) {
+  highLighter(lvl);
   return (
   <div className='container'>
     <div className='row' style={setStyleSheet(pos)}>
       <div className='col-md-4'>
         <div style={{textAlign: "center"}} className="alert-center">
           <div style={{display: "flex", justifyContent: "flex-end"}}>
-          <a onClick={() => {level = 5; increaseLevel()}} className='cancel'><i className="fa-solid fa-xmark"></i></a>
+          <a onClick={() => {level = 5; increaseLevel(); clearHighLighter()}} className='cancel'><i className="fa-solid fa-xmark"></i></a>
           </div>
           <h3>{title[lvl]}</h3>
           <p>{text[lvl]}</p>
@@ -154,7 +166,8 @@ function giveMeCoffee() {
   )
 }
 
-timer(2000);
+cancelCoffee();
+// timer(2000);
 // root2.render(giveMeCoffee());
 console.log("localStorage: "+localValue);
 if (localValue === null || localValue == "null") {
