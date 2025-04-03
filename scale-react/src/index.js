@@ -15,7 +15,7 @@ const root2 = ReactDOM.createRoot(document.getElementById('coffee'));
 let text = ["Scale Converter is a free, open-source website made with the goal of simplifying music production for everyone! Provide your scale tonics and a degree or note progression of your choice and let the site handle the rest!", "At the highlighted section you need to provide the first note(tonic) of your scale. You can modify it's location by changing the corresponding mode(default is Ionian)", "After this you need to do the same thing with the new mode that you want your progression to be modified. It works on the same logic as the first section.", "Here you need to provide your progression(only provide the notes, not the chords!). If you want to give the progression by it's degree, you can do that as well by switching to degree mode. For that, just click on the arrow button to the left.", "The result section provides all the neccesary information you need. The chord progression in both scale as well as all the compatible sus chords to use(note: every sus4 compatible notes are also compatible with sus2)"];
 let title = ["Help", "Original Tonic", "New Tonic", "The Progression", "Result Section"];
 
-// let isRunnable = true; console.log(isRunnable); /* localstorage */
+// let isRunnable = true; //console.log(isRunnable); /* localstorage */
 let localValue = localStorage.getItem("popup");
 let level = 0;
 
@@ -42,7 +42,7 @@ function setStyleSheet(pos) { /*position of the div*/ /*UPDATE: This used to mov
 }
 
 function highLighter(x) {
-  console.log("lvl index is: " + x);
+  //console.log("lvl index is: " + x);
   const elements = document.getElementsByClassName("highlightable");
   if (x > 0 && x < 4) {
     if (x-1 != 0) {
@@ -176,9 +176,9 @@ function giveMeCoffee() {
 
 cancelCoffee();
 timer(600000);
-console.log("react script ran!");
+//console.log("react script ran!");
 // root2.render(giveMeCoffee());
-console.log("localStorage: "+localValue);
+//console.log("localStorage: "+localValue);
 if (localValue === null || localValue == "null") {
   level= 5;
   increaseLevel();
@@ -195,6 +195,6 @@ if (localValue === null || localValue == "null") {
 // root.render(giveMeCoffee()) //this isnt working for some reason - also check focus() with kadam
 
 // If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
+// to log results (for example: reportWebVitals(//console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
