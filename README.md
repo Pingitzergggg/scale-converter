@@ -1,4 +1,4 @@
-# ScaleConvert Website
+# [ScaleConvert Website](https://scaleconvert.netlify.app)
 
 Scale Converter is a free, open-source website made with the goal of simplifying music production for everyone! Provide your scale tonics and a degree or note progression of your choice and let the site handle the rest!
 
