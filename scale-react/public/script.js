@@ -219,6 +219,7 @@ function clearItems() {
     document.getElementById("prog_notes").value = "";
     document.getElementById("original_mode").value = "ionian";
     document.getElementById("new_mode").value = "ionian";
+    location.reload();
 }
 
 function changeCheckbox() {
@@ -261,6 +262,14 @@ function changeModes(x) {
     }
     if (checkbox == false && document.getElementById("prog_notes").value != "") {
         syntaxChecker("prog_notes");
+    }
+}
+
+function isInputEmpty(input_id) {
+    if (input_id != "" || input_id != " ") {
+        syntaxChecker(input_id);
+    } else {
+        document.getElementById(input_id+"error").style = "display: none";
     }
 }
 

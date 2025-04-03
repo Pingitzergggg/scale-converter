@@ -80,9 +80,9 @@
           <div class="input-group flex-nowrap bar h_tonic">
             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-music"></i></span>
             <input type="text" class="form-control input left" placeholder="Original Tonic" id="original_tonic"
-              onchange="syntaxChecker('original_tonic')" aria-label="Username" aria-describedby="addon-wrapping">
+              onchange="isInputEmpty('original_tonic')" aria-label="Username" aria-describedby="addon-wrapping">
           </div>
-          <!-- <input type="text" onchange="syntaxChecker('original_tonic')" placeholder="Original Tonic" id="original_tonic"> -->
+          <!-- <input type="text" onchange="isInputEmpty('original_tonic')" placeholder="Original Tonic" id="original_tonic"> -->
           <p id="original_tonic_error" class="error"></p>
         </div>
         <div class="col-md-4 div">
@@ -114,9 +114,9 @@
           <div class="input-group flex-nowrap bar h_tonic">
             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-music"></i></span>
             <input type="text" class="form-control input left" placeholder="New Tonic" id="new_tonic"
-              onchange="syntaxChecker('new_tonic')" aria-label="Username" aria-describedby="addon-wrapping">
+              onchange="isInputEmpty('new_tonic')" aria-label="Username" aria-describedby="addon-wrapping">
           </div>
-          <!-- <input type="text" onchange="syntaxChecker('new_tonic')" placeholder="New Tonic" id="new_tonic"> -->
+          <!-- <input type="text" onchange="isInputEmpty('new_tonic')" placeholder="New Tonic" id="new_tonic"> -->
           <p id="new_tonic_error" class="error"></p>
     
         </div>
@@ -150,9 +150,9 @@
             <span style="cursor: pointer;" onclick="changeCheckbox()" class="input-group-text h_switch" id="addon-wrapping"><i
                 class="fa-solid fa-right-left clickable arrows"></i></span>
             <input type="text" class="form-control input left" style="display: none;" placeholder="Prog. Degrees" id="prog_degrees"
-              onchange="syntaxChecker('prog_degrees')" aria-label="Username" aria-describedby="addon-wrapping">
+              onchange="isInputEmpty('prog_degrees')" aria-label="Username" aria-describedby="addon-wrapping">
             <input type="text" class="form-control input left" placeholder="Prog. Notes" id="prog_notes"
-              onchange="syntaxChecker('prog_notes')" aria-label="Username" aria-describedby="addon-wrapping">
+              onchange="isInputEmpty('prog_notes')" aria-label="Username" aria-describedby="addon-wrapping">
           </div>
           <p id="prog_notes_error" class="error"></p>
           <p id="prog_degrees_error" class="error"></p>
