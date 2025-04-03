@@ -12,14 +12,17 @@ function setDarkMode(theme) {
     if (theme == 'dark') {
         document.getElementById('favicon_moon').style = 'display: none;';
         document.getElementById('favicon_sun').style = 'display: inline-block;';
-        backgroundColor.style.setProperty('--color', 'grey')
-        // document.getElementsByTagName('body')[0].style = 'background-color: grey;';
-        document.getElementsByClassName('btn').style = 'background-color: grey;';
+        backgroundColor.style.setProperty('--color', '#2e2e34');
+        backgroundColor.style.setProperty('--nav-color', 'black');
+        backgroundColor.style.setProperty('--input-color', 'whitesmoke');
+        backgroundColor.style.setProperty('--disabled-input-color', '#c7cacc');
     } else {
         document.getElementById('favicon_sun').style = 'display: none;';
         document.getElementById('favicon_moon').style = 'display: inline-block;';
         backgroundColor.style.setProperty('--color', 'whitesmoke');
-        // document.getElementsByTagName('body')[0].style = 'background-color: whitesmoke;';
+        backgroundColor.style.setProperty('--nav-color', '#2b3035');
+        backgroundColor.style.setProperty('--input-color', 'white');
+        backgroundColor.style.setProperty('--disabled-input-color', '#e9ecef');
     }
 }
 

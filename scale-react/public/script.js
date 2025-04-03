@@ -1,18 +1,3 @@
-document.getElementById('p_degrees').value = '';
-document.getElementById('p_original_prog').value = '';
-document.getElementById('p_modified_prog').value = '';
-document.getElementById('p_original_prog_sus').value = '';
-document.getElementById('p_modified_prog_sus').value = '';
-document.getElementById("prog_degrees").style = "display: none;";
-// document.getElementById("sus_div").style = "display: none;";
-document.getElementById("original_tonic").value = "";
-document.getElementById("original_scale").value = "";
-document.getElementById("new_tonic").value = "";
-document.getElementById("new_scale").value = "";
-document.getElementById("prog_degrees").value = "";
-document.getElementById("prog_notes").value = "";
-document.getElementById("original_mode").value = "ionian";
-document.getElementById("new_mode").value = "ionian";
 steps = [1,1,0,1,1,1,0];
 chords = ["", "m", "m", "", "", "m", "dim"];
 sus_chords = ["sus4", "sus4", "sus2", "sus2", "sus4", "sus4", "dim"];
@@ -216,6 +201,24 @@ function convert() {
             document.getElementById("p_modified_prog_sus").value = progSussify(modified_prog, modified_sus_chords).join("-");
         }
     }
+}
+
+function clearItems() {
+    document.getElementById('p_degrees').value = '';
+    document.getElementById('p_original_prog').value = '';
+    document.getElementById('p_modified_prog').value = '';
+    document.getElementById('p_original_prog_sus').value = '';
+    document.getElementById('p_modified_prog_sus').value = '';
+    document.getElementById("prog_degrees").style = "display: none;";
+    // document.getElementById("sus_div").style = "display: none;";
+    document.getElementById("original_tonic").value = "";
+    document.getElementById("original_scale").value = "";
+    document.getElementById("new_tonic").value = "";
+    document.getElementById("new_scale").value = "";
+    document.getElementById("prog_degrees").value = "";
+    document.getElementById("prog_notes").value = "";
+    document.getElementById("original_mode").value = "ionian";
+    document.getElementById("new_mode").value = "ionian";
 }
 
 function changeCheckbox() {

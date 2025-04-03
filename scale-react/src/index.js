@@ -88,7 +88,6 @@ function increaseLevel() {
     localValue = localStorage.getItem("popup"); //localstorage update
     root.render(<></>);
   }
-  console.log(level);
 }
 
 function cancelCoffee() {
