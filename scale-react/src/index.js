@@ -140,7 +140,7 @@ function infoPanel() {
             <li>Fontawesome</li>
           </ul>
           <p>
-            Note: This site is <strong>open source</strong>. Meaning that the code of the page is freely availbe on my <a href='https://github.com/Pingitzergggg'>Github</a>
+            Note: This site is <strong>open source</strong>. Meaning that the code of the page is freely availbe on my <a href='https://github.com/Pingitzergggg/scale-converter'>Github</a>
           </p>
         </div>
       </div>
