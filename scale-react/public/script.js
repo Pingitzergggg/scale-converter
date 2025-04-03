@@ -227,10 +227,14 @@ function changeCheckbox() {
         checkbox = false;
         document.getElementById("prog_degrees").style = "display: none;";
         document.getElementById("prog_notes").style = "display: inline;";
+        document.getElementById("prog_degrees").value = checkboxNeedsTurn ? document.getElementById("prog_degrees").value : "";
+        isInputEmpty("prog_degrees");
     } else {
         checkbox = true;
         document.getElementById("prog_degrees").style = "display: inline";
         document.getElementById("prog_notes").style = "display: none;";
+        document.getElementById("prog_notes").value = "";
+        isInputEmpty("prog_notes");
     }
 }
 
@@ -265,11 +269,16 @@ function changeModes(x) {
     }
 }
 
+let checkboxNeedsTurn = false; //checks if prog_degrees throws error
 function isInputEmpty(input_id) {
-    if (input_id != "" || input_id != " ") {
+    const element = document.getElementById(input_id);
+    if (element.value.length != 0) {
+        console.log("element value is: '"+element.value+"'");
+        checkboxNeedsTurn = input_id == "prog_degrees" ? true : false;
         syntaxChecker(input_id);
     } else {
-        document.getElementById(input_id+"error").style = "display: none";
+        console.log("input is empty")
+        document.getElementById(input_id+"_error").style = "display: none";
     }
 }
 
@@ -368,4 +377,15 @@ function syntaxChecker(input_id) {
         }
     }
     console.log(runnable);
+}
+
+function onloadSyntaxChecker() {
+    const input_list = ['original_tonic', 'new_tonic', 'prog_degrees', 'prog_notes'];
+    
+    for(let i = 0; i < input_list.length; i++) {
+        isInputEmpty(input_list[i]);
+        if (checkboxNeedsTurn && checkbox == false) {
+            changeCheckbox();
+        }
+    }
 }

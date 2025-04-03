@@ -93,6 +93,7 @@ nav a {
 .error {
     display: none;
     color: red;
+    text-align: center;
 }
 
 .btn {
