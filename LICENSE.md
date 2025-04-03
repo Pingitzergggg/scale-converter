@@ -1,4 +1,4 @@
-# Licence
+# License
 
 This site was created by [David Pingitzer](https://github.com/Pingitzergggg)!
 
