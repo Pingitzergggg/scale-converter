@@ -386,6 +386,7 @@ function onloadSyntaxChecker() {
         isInputEmpty(input_list[i]);
         if (checkboxNeedsTurn && checkbox == false) {
             changeCheckbox();
+            checkboxNeedsTurn = false;
         }
     }
 }
