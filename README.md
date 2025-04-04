@@ -30,7 +30,7 @@ Now you will see your full C Major scale in the "_Original Scale_" input.
 
 <strong>2.</strong>Providing a chord progression to convert:
 
-The real power of ScaleConvert shows when you use it for actual conversions. For this, you need to provide the two scale tonics the way it's described in the first example. Now you can either choose to provide a progression of notes. For this you need to be aware of the notes of the original scale. If you do not want to know any of the notes of any scale you can just simply add the progression in degrees like: "1-5-4-3".
+The real power of ScaleConvert shows when you use it for actual conversions. For this, you need to provide the two scale tonics the way it's described in the first example. Now you can either choose to provide a progression of notes or degrees. For this you need to be aware of the notes of the original scale. If you do not want to know any of the notes of any scale you can just simply add the progression in degrees like: "1-5-4-3".
 
 > For this, you need to provide the two scale tonics as showns before.<br>
 > After this, you need to decide which way you want to give your progression: `Degree` or `Note`. You can switch between these two otions by clicking the arrow button on the left of the input field.<br>
