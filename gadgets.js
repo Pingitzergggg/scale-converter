@@ -28,14 +28,14 @@ function setDarkMode(theme) {
 
 // localStorage.setItem('theme', null);
 function changeDarkMode() {
-    let theme = localStorage.getItem('theme'); console.log(theme)
+    let theme = localStorage.getItem('theme'); //console.log(theme)
     if (theme == 'dark') {
         localStorage.setItem('theme', 'white');
     } else {
         localStorage.setItem('theme', 'dark');
     }
     theme = localStorage.getItem('theme');
-    setDarkMode(theme); console.log("Changed theme to: "+theme);
+    setDarkMode(theme); //console.log("Changed theme to: "+theme);
 }
 
 // window.setTimeout(function () { 
