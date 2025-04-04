@@ -175,7 +175,7 @@ function giveMeCoffee() {
 }
 
 cancelCoffee();
-timer(600000);
+timer(2000);
 //console.log("react script ran!");
 // root2.render(giveMeCoffee());
 //console.log("localStorage: "+localValue);

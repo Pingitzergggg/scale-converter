@@ -1,6 +1,6 @@
 .coffee-center {
     /* background-color: rgb(176, 215, 216); */
-    background-color: wheat;
+    background-color: wheat !important;
     border: 5px solid black;
 }
 
