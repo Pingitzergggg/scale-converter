@@ -63,12 +63,18 @@ nav a {
 }
 
 #main {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 90vh;
+    width: 100vw;
+    /* margin-bottom: 20px; */
 }
 
 .navbar {
     background-color: var(--nav-color) !important;
-    margin-bottom: 3%;
+    height: 10vh;
+    /* margin-bottom: 3%; */
 }
 
 .gadgets {
@@ -130,6 +136,7 @@ nav a {
 
 .input, select, span {
     background-color: var(--input-color) !important;
+    
 }
 
 .input:disabled {
@@ -168,6 +175,7 @@ footer {
     /* background-color: rgb(175, 175, 175); old color */
     background-color: var(--nav-color);
     color: whitesmoke;
+    height: 25vh;
 }
 
 footer .footer_div {
@@ -232,6 +240,17 @@ footer a:hover {
     i {
         margin-right: 2.5px;
     }
+}
+
+.lowered-hero-background {
+    background-color: gray;
+    height: 75vh;
+}
+
+.lowered-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width: 990px) { /*Phone mode*/
