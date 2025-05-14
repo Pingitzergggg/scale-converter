@@ -66,14 +66,11 @@ nav a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 90vh;
-    width: 100vw;
     /* margin-bottom: 20px; */
 }
 
 .navbar {
     background-color: var(--nav-color) !important;
-    height: 10vh;
     /* margin-bottom: 3%; */
 }
 
@@ -175,7 +172,6 @@ footer {
     /* background-color: rgb(175, 175, 175); old color */
     background-color: var(--nav-color);
     color: whitesmoke;
-    height: 25vh;
 }
 
 footer .footer_div {
@@ -244,7 +240,6 @@ footer a:hover {
 
 .lowered-hero-background {
     background-color: gray;
-    height: 75vh;
 }
 
 .lowered-hero {
@@ -291,6 +286,22 @@ footer a:hover {
 @media screen and (min-width: 991px) { /*Desktop mode*/
     #github-mini {
         display: none;
+    }
+
+    #main {
+        height: 90vh;
+    }
+
+    .navbar {
+        height: 10vh;
+    }
+
+    .lowered-hero-background {
+        height: 75vh;
+    }
+
+    footer {
+        height: 25vh;
     }
     
     .fullscreen {
