@@ -135,6 +135,7 @@ nav a {
 
 .input, select, span {
     background-color: var(--input-color) !important;
+    
 }
 
 .input:disabled {
