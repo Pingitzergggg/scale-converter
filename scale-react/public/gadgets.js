@@ -1,6 +1,16 @@
-fetch("https://pgapi.ddns.net:443/api/scaleconvert/viewercount")
-    .then(response => response.json())
-    .then(data => console.log(data.reply));
+let address;
+fetch("https://api.ipify.org?format=json")
+        .then(response => response.json())
+        .then(data => {
+            address = String(data.ip);
+            fetch("https://pgapi.ddns.net:443/api/scaleconvert/viewercount", {
+                method: 'POST',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({ip: address})
+            })
+                .then(response => response.json())
+                .then(data => console.log(data.reply));
+        });
 
 function setFullscreen() {
     const element = document.getElementsByTagName('body')[0];
