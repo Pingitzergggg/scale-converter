@@ -1,3 +1,7 @@
+fetch("https://pgapi.ddns.net:443/api/scaleconvert/viewercount")
+    .then(response => response.json())
+    .then(data => console.log(data.reply));
+
 function setFullscreen() {
     const element = document.getElementsByTagName('body')[0];
     if (document.fullscreenElement) {
@@ -37,7 +41,3 @@ function changeDarkMode() {
     theme = localStorage.getItem('theme');
     setDarkMode(theme); //console.log("Changed theme to: "+theme);
 }
-
-// window.setTimeout(function () { 
-//     document.getElementById('progs').focus(); 
-// }, 0); 
