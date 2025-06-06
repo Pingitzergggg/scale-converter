@@ -5,7 +5,10 @@ fetch("https://api.ipify.org?format=json")
             address = String(data.ip);
             fetch("https://pgapi.ddns.net:443/api/scaleconvert/viewercount", {
                 method: 'POST',
-                headers: {'Content-type': 'application/json'},
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-API-Key': "]WcdihR9N6}Ol5/V`e}sDD',HRRZIm`Kk|oG'grXb})cJqKS(S"
+                },
                 body: JSON.stringify({ip: address})
             })
                 .then(response => response.json())
